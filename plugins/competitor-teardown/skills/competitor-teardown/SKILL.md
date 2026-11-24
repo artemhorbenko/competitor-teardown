@@ -37,6 +37,7 @@ Record each answer in `answers` (a skipped one shows the assumption) and add an 
 Read `references/lenses.md` and `references/data-sources.md`. Walk the same pages for every product, including ours: homepage, pricing, product and integrations pages, docs or developer pages, customers or case studies, comparison and "alternatives" pages, careers. Then review sites (G2, Capterra, Software Advice, app stores), a Tranco rank, Crunchbase or press for funding, and Wayback Machine snapshots from about 12 months ago.
 
 For every fact keep: the URL, the date you checked it, what you saw in your own words, and who published it. Rules while gathering:
+- Audit only each product's production domain (the one the user names, e.g. www.example.com). Ignore other subdomains found via search (old landing pages, A/B or staging hosts) unless the user confirms they are live.
 - Public pages and review sites only. No sign-ups, trials, demo requests, forms or contacting anyone at a competitor.
 - **Quote at most 15 words**, in quotation marks, and only when the exact words matter (a headline, a claim aimed at us). Otherwise paraphrase.
 - **One vendor's words about another are a claim, not a fact.** When a competitor's comparison page says something about us (or about a third vendor), record it with `claim: true` and check it against the subject's own pages; a contradiction is itself a finding.
