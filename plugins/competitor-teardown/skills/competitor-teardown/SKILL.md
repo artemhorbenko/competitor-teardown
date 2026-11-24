@@ -40,6 +40,7 @@ For every fact keep: the URL, the date you checked it, what you saw in your own 
 - Public pages and review sites only. No sign-ups, trials, demo requests, forms or contacting anyone at a competitor.
 - **Quote at most 15 words**, in quotation marks, and only when the exact words matter (a headline, a claim aimed at us). Otherwise paraphrase.
 - **One vendor's words about another are a claim, not a fact.** When a competitor's comparison page says something about us (or about a third vendor), record it with `claim: true` and check it against the subject's own pages; a contradiction is itself a finding.
+- Read the customers or case-studies page of every product, ours included; proof that is buried there is a different finding from proof that does not exist.
 - A missing page is a finding only after you looked for it (the footer first, then the sitemap and a `site:` search). Otherwise mark the cell `nd` (no data).
 - **Read the page itself.** A fetch tool that returns a model's summary of a page can add facts that are not on it; use it to find pages, then confirm each fact in the page text (browser or raw HTML) before it goes into a cell.
 - One source = one URL. When the same tool answers for several products (Tranco, an app-store search, a G2 page), add one source per product's URL.
