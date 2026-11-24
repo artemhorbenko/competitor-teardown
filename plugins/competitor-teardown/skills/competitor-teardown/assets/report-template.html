@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Competitor teardown: demo report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Condensed:wght@600;800&family=Sofia+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE work: a competitor teardown read by product, marketing and sales, dense and calm
+   IDEA an annual-report spread: the gap as headline, one vermilion mass marks "us" and where we trail
+   PICTURE comparison matrix with a source on every cell; strategy canvas; ERRC; positioning map; win/lose; moves
+   COLOUR white / black ink, vermilion #ff4a1c for us, where we trail and top bets, amber for partial; night on #120d0b
+   TYPE Sofia Sans Condensed 800 for titles and figures + Sofia Sans for text (both Cyrillic)
+   LAYOUT laptop: title + 4 figures, products strip; two-column bands. phone: everything stacks, tables become cards */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#120d0b);--ink:light-dark(#111111,#f4efe9);--mute:light-dark(#5d5a57,#b3aca5);--line:light-dark(#e6e2de,#2e2622);--soft:light-dark(#f6f3f0,#1c1512);--red:light-dark(#ff4a1c,#ff6a43);--amber:light-dark(#d98a00,#f2b23a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Sofia Sans",system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+.band{padding-block:clamp(28px,4vw,56px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1,h2,.num{font-family:"Sofia Sans Condensed","Arial Narrow",sans-serif;font-weight:800;letter-spacing:-.02em;line-height:1.05;margin:0}
+h1{font-size:clamp(32px,5vw,52px);text-wrap:balance;max-width:22ch}
+h2{font-size:clamp(26px,3vw,34px);text-wrap:balance;margin-bottom:8px}
+h3{font-size:17px;margin:0 0 4px}
+p{margin:0 0 12px;max-width:68ch}
+.lead{font-size:17px;color:var(--mute);margin-top:14px}
+.demo{display:inline-block;font-size:13px;color:var(--mute);border:1px solid var(--line);border-radius:12px;padding:2px 10px;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(10em,1fr));gap:0;margin-top:28px;border-top:2px solid var(--ink)}
+.kpi{padding:14px 16px 6px 0}
+.kpi .num{font-size:clamp(34px,4.5vw,48px)}
+.kpi small{display:block;font-size:13px;color:var(--mute)}
+.red{color:var(--red)}
+.nav{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);display:flex;gap:4px;overflow-x:auto;padding:6px max(5vw,16px)}
+.nav a{flex:none;color:var(--ink);text-decoration:none;font-size:14px;padding:10px 12px;border-radius:8px}
+.nav a:hover,.nav a:focus-visible{background:var(--soft);outline:none}
+.alt{background:var(--soft)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:start;margin-top:18px}
+.fig{position:relative;min-height:380px}
+.fig>svg{position:absolute;inset:0;width:100%;height:100%}
+svg text{paint-order:stroke;stroke:var(--bg);stroke-width:4px;font-family:"Sofia Sans",sans-serif;font-size:13px}
+.alt svg text{stroke:var(--soft)}
+.ico{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.meter{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.meter i{display:block;height:100%;border-radius:99px;background:var(--ink)}
+.meter i.low{background:var(--red)}.meter i.mid{background:var(--amber)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.chip{font:inherit;font-size:14px;min-height:44px;padding:0 16px;border-radius:99px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th{text-align:left;font-size:13px;color:var(--mute);font-weight:600;border-bottom:2px solid var(--ink);padding:8px 8px 6px;vertical-align:bottom}
+td{border-bottom:1px solid var(--line);padding:10px 8px;vertical-align:top}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:13px;white-space:nowrap}
+.type{font-size:13px;padding:2px 8px;border-radius:4px;white-space:nowrap;border:1px solid var(--ink)}
+.type.ex{border-color:var(--red);color:var(--red)}
+.ice{display:grid;grid-template-columns:3em minmax(60px,1fr);gap:8px;align-items:center}
+tr.top .ice .meter i{background:var(--red)}
+tr.top td:first-child{color:var(--red);font-weight:800}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}
+.card{border-top:4px solid var(--red);background:var(--bg);padding:18px 18px 8px}
+.card .num{font-size:40px;color:var(--red)}
+.card dl{margin:10px 0 0;font-size:15px}
+.card dt{font-size:13px;color:var(--mute)}
+.card dd{margin:0 0 10px}
+.conf{margin-top:18px}
+.conf .row{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr) 3em;gap:10px;align-items:center}
+.conf .meter{height:12px}
+.conf b{font-family:"Sofia Sans Condensed",sans-serif;font-size:18px;text-align:right}
+details{margin-top:20px;border-top:1px solid var(--line);padding-top:12px}
+summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+footer{font-size:13px;color:var(--mute)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:14px;color:var(--mute);margin-top:14px}
+@media(max-width:900px){.two{grid-template-columns:minmax(0,1fr)}.cards{grid-template-columns:minmax(0,1fr)}}
+.plan{margin-top:20px;border-top:2px solid var(--ink)}
+.plan details{margin:0;border-top:0;border-bottom:1px solid var(--line);padding:0}
+.plan summary{display:grid;grid-template-columns:2.4em minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 0;list-style:none}
+.plan summary::-webkit-details-marker{display:none}
+.plan summary .num{font-size:26px}
+.plan summary .ttl{font-weight:700}
+.plan summary .ttl small{display:flex;flex-wrap:wrap;gap:6px 12px;font-weight:400;color:var(--mute);font-size:13px;margin-top:2px}
+.plan summary .arr{width:28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .2s}
+.plan details[open] .arr{transform:rotate(180deg)}
+.plan .top .num{color:var(--red)}
+.pbody{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:8px 36px;padding:0 0 18px 3.4em}
+.pbody h4{font-size:13px;color:var(--mute);font-weight:600;margin:10px 0 4px}
+.pbody p,.pbody li{font-size:15px}
+.pbody ol,.pbody ul{margin:0;padding-left:1.2em}
+.pbody li{margin-bottom:4px}
+.facts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 12px;font-size:15px;margin-top:10px}
+.facts dt{color:var(--mute);font-size:13px;padding-top:2px}
+.facts dd{margin:0}
+.tools{display:flex;justify-content:flex-end;margin-top:-6px}
+@media(prefers-reduced-motion:reduce){.plan summary .arr{transition:none}}
+@media(max-width:700px){.pbody{grid-template-columns:minmax(0,1fr);padding-left:0}}
+.t{font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;cursor:help;text-decoration:underline dotted color-mix(in srgb,var(--ink) 55%,transparent);text-underline-offset:3px}
+.t:focus-visible{outline:2px solid var(--red);outline-offset:2px;border-radius:2px}
+#tip{position:fixed;z-index:20;max-width:min(320px,calc(100vw - 32px));background:var(--ink);color:var(--bg);font-size:14px;line-height:1.45;padding:10px 12px;border-radius:6px;box-shadow:0 6px 24px rgba(0,0,0,.18);display:none}
+#tip b{display:block;margin-bottom:2px}
+.gloss{display:grid;grid-template-columns:minmax(0,12em) minmax(0,1fr);gap:6px 20px;font-size:15px;margin-top:12px}
+.gloss dt{font-weight:700}
+.gloss dd{margin:0;color:var(--mute)}
+.ev{display:inline-block;font-size:12px;line-height:1.3;padding:1px 7px;border-radius:99px;border:1px solid var(--line);color:var(--mute);white-space:nowrap;vertical-align:1px}
+.ev.hyp{border-style:dashed}
+.answers{display:grid;grid-template-columns:minmax(0,10em) minmax(0,1fr);gap:4px 16px;font-size:15px;margin:6px 0 0}
+.answers dt{color:var(--mute);font-size:14px}
+.answers dd{margin:0}
+.answers dd.skip{color:var(--amber)}
+@media(max-width:600px){.gloss{grid-template-columns:minmax(0,1fr)}.gloss dd{margin-bottom:8px}.answers{grid-template-columns:minmax(0,1fr)}.answers dd{margin-bottom:6px}}
+.cv{display:block;min-width:0}
+/* products strip */
+.prods{display:grid;grid-template-columns:repeat(auto-fit,minmax(13em,1fr));gap:0 20px;margin-top:22px}
+.prod{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px;align-items:start;padding:10px 0;border-bottom:1px solid var(--line)}
+.prod svg{width:44px;height:16px;margin-top:4px}
+.prod b{display:block}
+.prod small{display:block;color:var(--mute);font-size:13px;overflow-wrap:anywhere}
+.prod.us b{color:var(--red)}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#fff;background:var(--red);border-radius:3px;padding:0 5px;margin-left:6px;vertical-align:2px}
+/* comparison matrix */
+.cmp{font-size:14px}
+.cmp th.p{min-width:9em}
+.cmp th.p.us{color:var(--red)}
+.cmp tr.grp th{font-size:13px;color:var(--ink);font-weight:700;border-bottom:1px solid var(--ink);padding-top:18px;background:transparent}
+.cmp tr.grp th .tag{font-size:13px}
+.cmp td.crit{font-weight:600;min-width:11em}
+.cmp td.us{background:color-mix(in srgb,var(--red) 5%,transparent)}
+.cmp td.trail{box-shadow:inset 3px 0 0 var(--red)}
+.mk{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:50%;vertical-align:-5px;margin-right:6px;flex:none}
+.mk svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.mk.yes{background:var(--ink);color:var(--bg)}
+.mk.part{background:var(--amber);color:#111}
+.mk.no{border:1.5px solid var(--mute);color:var(--mute)}
+.mk.nd{border:1.5px dashed var(--line);color:var(--mute)}
+.ct{color:var(--ink)}
+.nd .ct{color:var(--mute)}
+.sref{font-size:11px;vertical-align:super;line-height:0;margin-left:2px;color:var(--mute);text-decoration:none;white-space:nowrap}
+.sref:hover,.sref:focus-visible{color:var(--red);text-decoration:underline}
+.claim{font-style:italic;color:var(--mute);font-size:13px}
+.mlegend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--mute);margin-top:12px;align-items:center}
+.mlegend span{display:inline-flex;align-items:center}
+.mlegend .bar{display:inline-block;width:3px;height:18px;background:var(--red);margin-right:8px}
+/* canvas & map */
+.cvl .lg{display:inline-flex;align-items:center;gap:6px;color:var(--ink)}.cvl svg{width:36px;height:14px}
+.keys{columns:2;font-size:14px;color:var(--mute);margin:10px 0 0;padding-left:1.6em}
+@media(max-width:600px){.keys{columns:1}}
+.errc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0;border-top:2px solid var(--ink);margin-top:18px}
+.eb{padding:14px 16px 10px 0;border-bottom:1px solid var(--line)}
+.eb:nth-child(odd){border-right:1px solid var(--line)}
+.eb:nth-child(even){padding-left:16px}
+.eb h3{font-family:"Sofia Sans Condensed",sans-serif;font-weight:800;font-size:22px;margin-bottom:6px}
+.eb.raise h3,.eb.create h3{color:var(--red)}
+.eb ul{margin:0;padding-left:1.1em;font-size:15px}
+.eb li{margin-bottom:8px}
+.eb li small{display:block;color:var(--mute);font-size:13px}
+.eb a.op{font-size:12px;color:var(--red);text-decoration:none;margin-left:4px;white-space:nowrap}
+@media(max-width:600px){.errc{grid-template-columns:minmax(0,1fr)}.eb:nth-child(odd){border-right:0}.eb:nth-child(even){padding-left:0}}
+/* win / lose */
+.wl h3{font-size:17px}
+.wl .side{border-top:4px solid var(--ink);padding-top:12px}
+.wl .side.lose{border-color:var(--red)}
+.wl .side>h3{font-family:"Sofia Sans Condensed",sans-serif;font-weight:800;font-size:24px;margin-bottom:10px}
+.wl .side.lose>h3{color:var(--red)}
+.wl article{padding:10px 0;border-bottom:1px solid var(--line)}
+.wl article p{font-size:15px;margin:0 0 4px}
+.wl article small{color:var(--mute);font-size:13px}
+/* sources */
+.srcs{margin:14px 0 0;padding-left:2em;font-size:15px}
+.srcs li{padding:4px 0;border-bottom:1px solid var(--line);scroll-margin-top:80px}
+.srcs li:target{background:color-mix(in srgb,var(--red) 10%,transparent)}
+.srcs li small{display:block;color:var(--mute);font-size:13px}
+.srcs a{overflow-wrap:anywhere}
+.st-ok{color:var(--ink)}.st-demo{color:var(--amber)}.st-no{color:var(--red)}
+.stl{font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:.03em}
+.icef{display:none;font-weight:400;color:var(--mute);font-size:13px}
+/* stacked tables on phones */
+@media(max-width:600px){
+ table{font-size:14px}
+ .stack thead{display:none}
+ .stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}
+ .stack td{display:flex;justify-content:space-between;gap:12px;border:0;padding:3px 0;align-items:flex-start}
+ .stack td::before{content:attr(data-l);color:var(--mute);font-size:13px;flex:none;max-width:40%}
+ .stack td .cv{text-align:right}
+ .stack td.first .cv{text-align:left;flex:1}
+ .stack td.first::before{display:none}
+ .cmp td.crit .cv{font-size:16px}
+ .cmp td .cv{text-align:left;flex:1}
+ .cmp td::before{min-width:7.5em}
+ .cmp tr.grp{display:block;border:0;padding:0}
+ .cmp tr.grp th{display:block;padding-top:20px}
+ .cmp td.trail{box-shadow:none;border-left:3px solid var(--red);padding-left:6px}
+ .ev{margin-top:4px}
+ .ops td:nth-child(6),.ops td:nth-child(7),.ops td:nth-child(8){display:none}
+ .icef{display:inline}
+ .ice{width:auto;grid-template-columns:auto minmax(70px,8em)}
+ .ice b{white-space:nowrap}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<!-- teardown lenses -->
+<symbol id="i-pos" viewBox="0 0 24 24"><path d="M5 21V4M5 4h12l-2 4 2 4H5"/></symbol>
+<symbol id="i-buyer" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></symbol>
+<symbol id="i-breadth" viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5"/></symbol>
+<symbol id="i-price" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></symbol>
+<symbol id="i-proof" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14l-2 7 5.5-3 5.5 3-2-7"/></symbol>
+<symbol id="i-attack" viewBox="0 0 24 24"><path d="M3 7h13M12 3l4 4-4 4M21 17H8M12 13l-4 4 4 4"/></symbol>
+<symbol id="i-onb" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l3 2M9 2h6"/></symbol>
+<symbol id="i-integ" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5M6 8h12v3a6 6 0 0 1-12 0zM12 17v4"/></symbol>
+<symbol id="i-rev" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.8-4.5 4.2 1.1 6L12 16.7 6.6 19.6l1.1-6L3.2 9.4l6.1-.8z"/></symbol>
+<symbol id="i-seo" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15 15l5 5M8 10.5h5"/></symbol>
+<symbol id="i-sig" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></symbol>
+<symbol id="i-chg" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5M12 7v5l3 3"/></symbol>
+<!-- move areas -->
+<symbol id="a-page" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6zM14 3v5h5M9 13h7M9 17h7"/></symbol>
+<symbol id="a-message" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+<symbol id="a-pricing" viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/></symbol>
+<symbol id="a-feature" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></symbol>
+<symbol id="a-content" viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16zM14 7l3 3"/></symbol>
+<symbol id="a-proof" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="M8.5 14l-2 7 5.5-3 5.5 3-2-7"/></symbol>
+<symbol id="a-sales" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a1 1 0 0 1-1 1A16 16 0 0 1 4 5a1 1 0 0 1 1-1"/></symbol>
+<symbol id="a-data" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+<!-- matrix marks -->
+<symbol id="m-yes" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+<symbol id="m-part" viewBox="0 0 24 24"><path d="M6 12h12"/></symbol>
+<symbol id="m-no" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17"/></symbol>
+<symbol id="m-nd" viewBox="0 0 24 24"><path d="M9 12h6"/></symbol>
+</svg>
+
+<header class="band"><div class="wrap">
+<span class="demo" data-t="label"></span>
+<h1 data-t="headline"></h1>
+<p class="lead" data-t="lead"></p>
+<div class="kpis" id="kpis"></div>
+<div class="prods" id="prods" data-i18n-aria="aProds" aria-label=""></div>
+</div></header>
+
+<nav class="nav" data-i18n-aria="aNav" aria-label="">
+<a href="#matrix" data-i18n="navMatrix"></a><a href="#canvas" data-i18n="navCanvas"></a><a href="#errc" data-i18n="navErrc"></a><a href="#pmap" data-i18n="navMap"></a><a href="#win" data-i18n="navWin"></a><a href="#moves" data-i18n="navMoves"></a><a href="#next" data-i18n="navNext"></a><a href="#plan" data-i18n="navPlan"></a><a href="#data" data-i18n="navData"></a>
+</nav>
+<div id="tip" role="tooltip"></div>
+
+<section class="band alt" id="matrix"><div class="wrap">
+<h2 data-t="matrixH"></h2>
+<p data-t="matrixP"></p>
+<div class="chips" role="group" data-i18n-aria="aFilter" aria-label="">
+<button class="chip" data-m="all" aria-pressed="true" data-i18n="mAll"></button>
+<button class="chip" data-m="diff" aria-pressed="false" data-i18n="mDiff"></button>
+<button class="chip" data-m="trail" aria-pressed="false" data-i18n="mTrail"></button>
+</div>
+<div class="scroll"><table class="stack cmp" id="cmp"><thead id="cmpHead"></thead><tbody id="cmpBody"></tbody></table></div>
+<div class="mlegend" id="mlegend"></div>
+</div></section>
+
+<section class="band" id="canvas"><div class="wrap">
+<h2 data-t="canvasH"></h2>
+<p data-t="canvasP"></p>
+<div class="fig" id="cv" style="min-height:400px" role="img" data-i18n-aria="aCanvas" aria-label=""></div>
+<div class="legend cvl" id="cvLegend"></div>
+<ol class="keys" id="cvKeys" hidden></ol>
+<p class="lead" style="font-size:14px" id="cvNote"></p>
+</div></section>
+
+<section class="band alt"><div class="wrap">
+<div class="two" style="margin-top:0">
+<div id="errc"><h2 data-t="errcH"></h2><p data-t="errcP"></p><div class="errc" id="errcGrid"></div></div>
+<div id="pmap"><h2 data-t="mapH"></h2><p data-t="mapP"></p><div class="fig" id="pm" style="min-height:420px" role="img" data-i18n-aria="aMap" aria-label=""></div><p class="lead" style="font-size:14px" id="pmNote"></p></div>
+</div>
+</div></section>
+
+<section class="band wl" id="win"><div class="wrap">
+<h2 data-t="winH"></h2>
+<p data-t="winP"></p>
+<div class="two"><div class="side win"><h3 data-i18n="wWin"></h3><div id="winList"></div></div><div class="side lose"><h3 data-i18n="wLose"></h3><div id="loseList"></div></div></div>
+</div></section>
+
+<section class="band alt" id="moves"><div class="wrap">
+<h2 data-t="mxH"></h2>
+<p data-t="mxP"></p>
+<div class="fig" id="mx" style="min-height:420px" role="img" data-i18n-aria="aMatrix" aria-label=""></div>
+</div></section>
+
+<section class="band" id="ops"><div class="wrap">
+<h2 data-t="opsH"></h2>
+<p data-t="opsP"></p>
+<div class="chips" role="group" data-i18n-aria="aFilter" aria-label="">
+<button class="chip" data-f="all" aria-pressed="true" data-i18n="fAll"></button>
+<button class="chip" data-f="opt" aria-pressed="false" data-i18n="fOpt"></button>
+<button class="chip" data-f="ex" aria-pressed="false" data-i18n="fEx"></button>
+</div>
+<div class="scroll"><table class="stack ops"><thead><tr><th>#</th><th data-i18n="thOp"></th><th data-i18n="thArea"></th><th data-i18n="thVs"></th><th data-i18n="thType"></th><th>I</th><th>C</th><th>E</th><th>ICE</th></tr></thead><tbody id="tbody"></tbody></table></div>
+</div></section>
+
+<section class="band alt" id="next"><div class="wrap">
+<h2 data-t="nextH"></h2>
+<p data-t="nextP"></p>
+<div class="cards" id="cards"></div>
+</div></section>
+
+<section class="band" id="plan"><div class="wrap">
+<h2 data-t="planH"></h2>
+<p data-t="planP"></p>
+<div class="chips tools"><button class="chip" id="toggleAll" aria-pressed="false" data-i18n="expand"></button></div>
+<div class="plan" id="planList"></div>
+</div></section>
+
+<section class="band alt" id="data"><div class="wrap">
+<div class="two" style="margin-top:0">
+<div>
+<h2 data-t="dataH"></h2>
+<p data-t="dataP"></p>
+<div class="conf"><div class="row"><span data-i18n="conf"></span><div class="meter"><i id="confBar"></i></div><b id="confNum"></b></div></div>
+<h3 style="margin-top:22px" data-i18n="answers"></h3>
+<dl class="answers" id="answers"></dl>
+</div>
+<div><h3 data-i18n="srcH"></h3><ol class="srcs" id="srcList"></ol></div>
+</div>
+<details><summary data-i18n="gloss"></summary><p data-i18n="glossHint"></p><dl class="gloss" id="gloss"></dl></details>
+<details><summary data-i18n="how"></summary><div data-t="how"></div></details>
+</div></section>
+
+<footer class="band" style="padding-block:20px"><div class="wrap"><span data-i18n="footer"></span><span data-t="footer"></span></div></footer>
+
+<script type="application/json" id="audit">
+{
+ "lang": "en",
+ "title": "Competitor teardown: demo report",
+ "checked": "2026-11-24",
+ "text": {
+  "label": "Demo report: fictional companies (Loopwell, Kinship, Amplo, Referrly, ShareMint) on .example domains; every number and page is made up",
+  "headline": "Kinship sells the switch from Loopwell with a price on the page; Loopwell answers with [[\"Talk to sales\"]]",
+  "lead": "Loopwell leads on enterprise depth, fraud controls and review ratings, but it trails on {trail} of {crit} criteria, nearly all at the evaluation step: no public price, no self-serve setup, no migration help. Kinship has built a comparison page and a migration guide aimed at Loopwell's customers. The cheapest wins are pages and proof, not features.",
+  "matrixH": "Loopwell trails on {trail} of {crit} criteria and leads outright on {lead}; the gaps cluster around pricing and switching",
+  "matrixP": "Same criteria for every product. Each cell shows what was seen and a numbered source with the date it was checked. A red bar marks a criterion where Loopwell is behind the best competitor. Ratings count as ✓ at 4.5+ with 100+ reviews.",
+  "canvasH": "Everyone crowds into the same curve on integrations; Loopwell's line drops exactly where buyers compare",
+  "canvasP": "Blue Ocean strategy canvas: offering level 0–10 per factor, judged from the matrix rows named in each factor. Where lines run together, nobody wins; the gaps are where a move can differ.",
+  "errcH": "Raise price clarity and switching help; create a proof library nobody else has",
+  "errcP": "ERRC grid for Loopwell's next two quarters, drawn from the matrix and the canvas.",
+  "mapH": "Loopwell sits alone in managed, referrals-only; Kinship and ShareMint sell suites from the self-serve side",
+  "mapP": "Positions are judgments from the matrix rows on setup, pricing and breadth, not measured data.",
+  "winH": "Loopwell wins on depth and trust, and loses before the first call",
+  "winP": "Each point cites the sources behind it.",
+  "mxH": "{qw} quick wins: mostly pages and proof that already exist inside the company",
+  "mxP": "Each dot is a move from the table below. Black: optimize what exists; red outline: exploration bets.",
+  "opsH": "{n} moves, ranked by ICE",
+  "opsP": "ICE = impact × confidence × ease (each 1–10). \"Observed\" means the gap is visible on public pages; \"hypothesis\" means it still needs a test.",
+  "nextH": "Three moves: show a price, answer the comparison page, help people switch in",
+  "nextP": "Each has a hypothesis, a success metric and the cheapest way to test it.",
+  "planH": "Full plan: all {n} moves, most valuable first",
+  "planP": "For each move: the evidence, the competitor pages behind it, steps, metric, effort and risk. The top three also show alternatives, an experiment with a threshold and a pre-mortem.",
+  "dataH": "Confidence {conf}%: public pages and review sites only",
+  "dataP": "This teardown read vendor sites, review listings, a domain rank list, a funding database and web archive snapshots. It did not see traffic, win rates or loss reasons, so impact scores are estimates.",
+  "how": [
+   "Checked sources: browser and web search available; traffic and CRM data not available. Asked 4 skippable questions; one was skipped.",
+   "Read each vendor's homepage, pricing, comparison and docs pages, review listings, a domain rank list, a funding database and archive snapshots from a year ago. Every cell records the page and the date.",
+   "Filled the same 17 criteria for all 5 products, marked one vendor's words about another as claims, and judged the canvas and the map from the matrix.",
+   "Scored moves with ICE, compared alternatives for the top 3, wrote experiments and pre-mortems, then validated the data and checked the page on desktop, tablet and phone."
+  ],
+  "footer": "demo data"
+ },
+ "kpis": [
+  {
+   "v": "{trail}/{crit}",
+   "l": "Criteria where Loopwell trails the best competitor",
+   "hot": true
+  },
+  {
+   "v": "4.7",
+   "l": "Loopwell's ReviewGrid rating, highest of five (186 reviews)",
+   "src": "rg"
+  },
+  {
+   "v": "3 of 4",
+   "l": "Competitors that show a price on their pricing page",
+   "src": "kn-price"
+  },
+  {
+   "v": "{qw}",
+   "l": "Quick wins"
+  }
+ ],
+ "products": [
+  {
+   "id": "loopwell",
+   "name": "Loopwell",
+   "url": "https://loopwell.example",
+   "us": true,
+   "tag": "Referral platform for mid-market brands"
+  },
+  {
+   "id": "kinship",
+   "name": "Kinship",
+   "url": "https://kinship.example",
+   "tag": "Referral and loyalty for Shopify brands"
+  },
+  {
+   "id": "amplo",
+   "name": "Amplo",
+   "url": "https://amplo.example",
+   "tag": "Enterprise advocacy suite"
+  },
+  {
+   "id": "referrly",
+   "name": "Referrly",
+   "url": "https://referrly.example",
+   "tag": "Self-serve referral tool for small shops"
+  },
+  {
+   "id": "sharemint",
+   "name": "ShareMint",
+   "url": "https://sharemint.example",
+   "tag": "Reviews and loyalty with a referral add-on"
+  }
+ ],
+ "criteria": [
+  {
+   "id": "promise",
+   "k": "One clear promise above the fold",
+   "lens": "pos",
+   "cells": {
+    "loopwell": {
+     "v": "yes",
+     "t": "Referral revenue you can prove, with an ROI calculator",
+     "s": "lw-home"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Referrals and loyalty in one Shopify app",
+     "s": "kn-home"
+    },
+    "amplo": {
+     "v": "part",
+     "t": "Advocacy, referrals, communities and events in one headline",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "Launch a referral program in 10 minutes",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "part",
+     "t": "Leads with reviews; referrals appear lower on the page",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "icp",
+   "k": "Names the target buyer and size",
+   "lens": "buyer",
+   "cells": {
+    "loopwell": {
+     "v": "yes",
+     "t": "Brands with $10m+ online revenue",
+     "s": "lw-price"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Shopify and Shopify Plus stores",
+     "s": "kn-price"
+    },
+    "amplo": {
+     "v": "yes",
+     "t": "Enterprise, 1,000+ employees",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "Small businesses and local services",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "part",
+     "t": "Any ecommerce store; no size given",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "industries",
+   "k": "Industry pages",
+   "lens": "buyer",
+   "cells": {
+    "loopwell": {
+     "v": "part",
+     "t": "Retail only",
+     "s": "lw-home"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Beauty, apparel, subscription, pet",
+     "s": "kn-home"
+    },
+    "amplo": {
+     "v": "yes",
+     "t": "Finance, telecom, SaaS, retail",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "part",
+     "t": "Services and local business",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "no",
+     "t": "No industry pages",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "loyalty",
+   "k": "Loyalty or rewards beyond referrals",
+   "lens": "breadth",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "Referrals only",
+     "s": "lw-home"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Points, tiers and referrals",
+     "s": "kn-home"
+    },
+    "amplo": {
+     "v": "yes",
+     "t": "Advocacy points and challenges",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "no",
+     "t": "Referrals only",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Points and VIP tiers",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "price",
+   "k": "Price shown on the pricing page",
+   "lens": "price",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "Three revenue bands, every one says Talk to sales",
+     "s": "lw-price"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "From $399/month, estimator by order volume",
+     "s": "kn-price"
+    },
+    "amplo": {
+     "v": "no",
+     "t": "Custom quote only",
+     "s": "am-price"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "$49, $129 and $299 per month",
+     "s": "rf-price"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Free plan, paid from $199/month",
+     "s": "sm-price"
+    }
+   }
+  },
+  {
+   "id": "trial",
+   "k": "Free plan or trial",
+   "lens": "price",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "Demo request only",
+     "s": "lw-price"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "14-day trial",
+     "s": "kn-price"
+    },
+    "amplo": {
+     "v": "no",
+     "t": "Demo request only",
+     "s": "am-price"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "Free up to 50 referrals a month",
+     "s": "rf-price"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Free plan",
+     "s": "sm-price"
+    }
+   }
+  },
+  {
+   "id": "named",
+   "k": "Named customers with a result number",
+   "lens": "proof",
+   "cells": {
+    "loopwell": {
+     "v": "part",
+     "t": "Logos shown; the two case studies name no brand",
+     "s": "lw-home"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Six named brands, each with a number",
+     "s": "kn-home"
+    },
+    "amplo": {
+     "v": "yes",
+     "t": "Named enterprise cases with ROI figures",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "part",
+     "t": "Quotes with first names only",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "part",
+     "t": "Logos, no numbers",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "vs",
+   "k": "Publishes comparison pages against rivals",
+   "lens": "attack",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "None found",
+     "s": "lw-home"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Kinship vs Loopwell page, updated October 2026",
+     "s": "kn-vs"
+    },
+    "amplo": {
+     "v": "no",
+     "t": "None found",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "Alternatives page listing four rivals",
+     "s": "rf-alt"
+    },
+    "sharemint": {
+     "v": "no",
+     "t": "None found",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "migrate",
+   "k": "Migration guide for switchers",
+   "lens": "attack",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "None found",
+     "s": "lw-docs"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Step-by-step guide for moving from Loopwell",
+     "s": "kn-migrate"
+    },
+    "amplo": {
+     "v": "nd"
+    },
+    "referrly": {
+     "v": "part",
+     "t": "CSV import of existing advocates",
+     "s": "rf-docs"
+    },
+    "sharemint": {
+     "v": "nd"
+    }
+   }
+  },
+  {
+   "id": "golive",
+   "k": "States a time to go live",
+   "lens": "onb",
+   "cells": {
+    "loopwell": {
+     "v": "part",
+     "t": "Says weeks, with no number",
+     "s": "lw-home"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Live in 7 days for Shopify stores",
+     "s": "kn-home"
+    },
+    "amplo": {
+     "v": "part",
+     "t": "Implementation plan agreed per client",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "10 minutes",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Install in one click",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "selfserve",
+   "k": "Self-serve setup",
+   "lens": "onb",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "Set up by the Loopwell team",
+     "s": "lw-docs"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Setup wizard in the Shopify app",
+     "s": "kn-home"
+    },
+    "amplo": {
+     "v": "no",
+     "t": "Managed implementation",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "Signup and wizard",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "App install and templates",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "shopify",
+   "k": "Shopify app",
+   "lens": "integ",
+   "cells": {
+    "loopwell": {
+     "v": "yes",
+     "t": "Listed, 4.8 from 64 reviews",
+     "s": "as"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Listed, 4.6 from 1,240 reviews",
+     "s": "as"
+    },
+    "amplo": {
+     "v": "no",
+     "t": "Not listed",
+     "s": "as"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "Listed, 4.2 from 310 reviews",
+     "s": "as"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Listed, 4.5 from 2,900 reviews",
+     "s": "as"
+    }
+   }
+  },
+  {
+   "id": "api",
+   "k": "Public API docs or MCP server",
+   "lens": "integ",
+   "cells": {
+    "loopwell": {
+     "v": "yes",
+     "t": "Public REST API docs and webhooks",
+     "s": "lw-docs"
+    },
+    "kinship": {
+     "v": "part",
+     "t": "API on the top plan only",
+     "s": "kn-price"
+    },
+    "amplo": {
+     "v": "yes",
+     "t": "API and an MCP server announced in 2026",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "part",
+     "t": "Zapier only",
+     "s": "rf-docs"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Public API",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "rating",
+   "k": "ReviewGrid rating and count",
+   "lens": "rev",
+   "cells": {
+    "loopwell": {
+     "v": "yes",
+     "t": "4.7 from 186 reviews; themes: support, fraud control",
+     "s": "rg"
+    },
+    "kinship": {
+     "v": "part",
+     "t": "4.4 from 402 reviews; themes: easy setup, price rises",
+     "s": "rg"
+    },
+    "amplo": {
+     "v": "part",
+     "t": "4.3 from 97 reviews; themes: powerful, long setup",
+     "s": "rg"
+    },
+    "referrly": {
+     "v": "part",
+     "t": "4.1 from 58 reviews; themes: cheap, limited",
+     "s": "rg"
+    },
+    "sharemint": {
+     "v": "part",
+     "t": "4.4 from 1,020 reviews; themes: easy install, support waits",
+     "s": "rg"
+    }
+   }
+  },
+  {
+   "id": "rank",
+   "k": "Domain rank and content footprint",
+   "lens": "seo",
+   "cells": {
+    "loopwell": {
+     "v": "part",
+     "t": "Rank 182,000; blog of 40 posts",
+     "s": "rank"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Rank 61,000; blog, templates, benchmark report",
+     "s": "rank"
+    },
+    "amplo": {
+     "v": "yes",
+     "t": "Rank 48,000; research reports",
+     "s": "rank"
+    },
+    "referrly": {
+     "v": "part",
+     "t": "Rank 240,000; how-to guides",
+     "s": "rank"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Rank 22,000",
+     "s": "rank"
+    }
+   }
+  },
+  {
+   "id": "hiring",
+   "k": "Hiring or funding signals in the last 12 months",
+   "lens": "sig",
+   "cells": {
+    "loopwell": {
+     "v": "part",
+     "t": "Two engineering roles open",
+     "s": "lw-careers"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Series B in June 2026; hiring sales in Europe",
+     "s": "fund"
+    },
+    "amplo": {
+     "v": "part",
+     "t": "Hiring freeze noted on careers page",
+     "s": "am-careers"
+    },
+    "referrly": {
+     "v": "nd"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Acquired a loyalty startup in 2026",
+     "s": "fund"
+    }
+   }
+  },
+  {
+   "id": "change",
+   "k": "Changed pricing or positioning in the last year",
+   "lens": "chg",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "Pricing page unchanged since a year ago",
+     "s": "wb"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Added the estimator and the vs-Loopwell page",
+     "s": "wb"
+    },
+    "amplo": {
+     "v": "part",
+     "t": "Added AI wording to the headline",
+     "s": "wb"
+    },
+    "referrly": {
+     "v": "nd"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Referral add-on moved into every paid plan",
+     "s": "wb"
+    }
+   }
+  }
+ ],
+ "canvas": {
+  "factors": [
+   {
+    "k": "Price clarity",
+    "basis": [
+     "price",
+     "trial"
+    ],
+    "levels": {
+     "loopwell": 1,
+     "kinship": 8,
+     "amplo": 1,
+     "referrly": 9,
+     "sharemint": 8
+    }
+   },
+   {
+    "k": "Speed to go live",
+    "basis": [
+     "golive",
+     "selfserve"
+    ],
+    "levels": {
+     "loopwell": 3,
+     "kinship": 8,
+     "amplo": 2,
+     "referrly": 10,
+     "sharemint": 9
+    }
+   },
+   {
+    "k": "Enterprise depth",
+    "basis": [
+     "icp",
+     "api"
+    ],
+    "levels": {
+     "loopwell": 8,
+     "kinship": 4,
+     "amplo": 9,
+     "referrly": 1,
+     "sharemint": 3
+    }
+   },
+   {
+    "k": "Named proof",
+    "basis": [
+     "named"
+    ],
+    "levels": {
+     "loopwell": 4,
+     "kinship": 8,
+     "amplo": 8,
+     "referrly": 3,
+     "sharemint": 3
+    }
+   },
+   {
+    "k": "Integrations",
+    "basis": [
+     "shopify",
+     "api"
+    ],
+    "levels": {
+     "loopwell": 8,
+     "kinship": 7,
+     "amplo": 7,
+     "referrly": 5,
+     "sharemint": 8
+    }
+   },
+   {
+    "k": "Switching help",
+    "basis": [
+     "vs",
+     "migrate"
+    ],
+    "levels": {
+     "loopwell": 0,
+     "kinship": 9,
+     "amplo": 1,
+     "referrly": 5,
+     "sharemint": 0
+    }
+   },
+   {
+    "k": "Suite breadth",
+    "basis": [
+     "loyalty",
+     "promise"
+    ],
+    "levels": {
+     "loopwell": 2,
+     "kinship": 7,
+     "amplo": 9,
+     "referrly": 1,
+     "sharemint": 7
+    }
+   },
+   {
+    "k": "Review rating",
+    "basis": [
+     "rating"
+    ],
+    "levels": {
+     "loopwell": 9,
+     "kinship": 7,
+     "amplo": 6,
+     "referrly": 5,
+     "sharemint": 7
+    }
+   }
+  ],
+  "note": "Levels are judgments from the named matrix rows, not measured data."
+ },
+ "map": {
+  "x": {
+   "k": "How it is bought and run",
+   "lo": "Self-serve",
+   "hi": "Managed"
+  },
+  "y": {
+   "k": "Scope",
+   "lo": "Referrals only",
+   "hi": "Full suite"
+  },
+  "points": {
+   "loopwell": {
+    "x": 8,
+    "y": 3
+   },
+   "kinship": {
+    "x": 4,
+    "y": 7
+   },
+   "amplo": {
+    "x": 9,
+    "y": 9
+   },
+   "referrly": {
+    "x": 1,
+    "y": 1
+   },
+   "sharemint": {
+    "x": 2,
+    "y": 7
+   }
+  },
+  "note": "Kinship added a price estimator and a vs-Loopwell page this year (archive snapshots): it is moving toward Loopwell's buyers from the self-serve side."
+ },
+ "errc": {
+  "eliminate": [
+   {
+    "t": "Talk to sales as the only door on the pricing page",
+    "why": "Three of four rivals show a price; Loopwell shows none.",
+    "op": 1
+   }
+  ],
+  "reduce": [
+   {
+    "t": "Required fields on the demo form",
+    "why": "Seven fields before any contact; Kinship starts a trial with an email.",
+    "op": 7
+   }
+  ],
+  "raise": [
+   {
+    "t": "Named proof with numbers",
+    "why": "Loopwell's case studies are anonymous while Kinship and Amplo name brands.",
+    "op": 4
+   },
+   {
+    "t": "Switching help",
+    "why": "Kinship's migration guide targets Loopwell customers; Loopwell offers nothing back.",
+    "op": 3
+   }
+  ],
+  "create": [
+   {
+    "t": "Fraud-savings report from platform data",
+    "why": "Fraud control is Loopwell's top review theme and no rival publishes numbers on it.",
+    "op": 6
+   }
+  ]
+ },
+ "win": [
+  {
+   "t": "Highest review rating of the five",
+   "d": "4.7 on ReviewGrid with support and fraud control as top themes.",
+   "s": [
+    "rg"
+   ],
+   "vs": [
+    "kinship",
+    "amplo",
+    "referrly",
+    "sharemint"
+   ]
+  },
+  {
+   "t": "Enterprise depth without an enterprise setup bill",
+   "d": "Public API and webhooks like Amplo, with a Shopify app Amplo lacks.",
+   "s": [
+    "lw-docs",
+    "as"
+   ],
+   "vs": [
+    "amplo"
+   ]
+  }
+ ],
+ "lose": [
+  {
+   "t": "No price where buyers compare",
+   "d": "Kinship, Referrly and ShareMint show prices; Loopwell asks for a call.",
+   "s": [
+    "lw-price",
+    "kn-price",
+    "rf-price",
+    "sm-price"
+   ],
+   "vs": [
+    "kinship",
+    "referrly",
+    "sharemint"
+   ]
+  },
+  {
+   "t": "Kinship owns the comparison",
+   "d": "A Kinship vs Loopwell page and a migration guide exist; Loopwell has neither.",
+   "s": [
+    "kn-vs",
+    "kn-migrate"
+   ],
+   "vs": [
+    "kinship"
+   ]
+  },
+  {
+   "t": "Referrals only, while three rivals sell suites",
+   "d": "Kinship, Amplo and ShareMint bundle loyalty; Loopwell sells one module.",
+   "s": [
+    "kn-home",
+    "am-home",
+    "sm-home"
+   ],
+   "vs": [
+    "kinship",
+    "amplo",
+    "sharemint"
+   ]
+  }
+ ],
+ "ops": [
+  {
+   "t": "Show a starting price or an estimator on the pricing page",
+   "a": "pricing",
+   "vs": [
+    "kinship",
+    "referrly",
+    "sharemint"
+   ],
+   "x": "opt",
+   "ev": "obs",
+   "I": 8,
+   "C": 7,
+   "E": 7
+  },
+  {
+   "t": "Publish a sourced Loopwell vs Kinship page",
+   "a": "page",
+   "vs": [
+    "kinship"
+   ],
+   "x": "opt",
+   "ev": "obs",
+   "I": 7,
+   "C": 7,
+   "E": 8
+  },
+  {
+   "t": "Switching kit: migration guide and import of existing advocates",
+   "a": "content",
+   "vs": [
+    "kinship"
+   ],
+   "x": "opt",
+   "ev": "hyp",
+   "I": 7,
+   "C": 6,
+   "E": 6
+  },
+  {
+   "t": "Name the brands behind both case studies and add one number each",
+   "a": "proof",
+   "vs": [
+    "kinship",
+    "amplo"
+   ],
+   "x": "opt",
+   "ev": "obs",
+   "I": 6,
+   "C": 7,
+   "E": 8
+  },
+  {
+   "t": "State a go-live number on the homepage, backed by recent launches",
+   "a": "message",
+   "vs": [
+    "kinship",
+    "referrly"
+   ],
+   "x": "opt",
+   "ev": "obs",
+   "I": 5,
+   "C": 6,
+   "E": 8
+  },
+  {
+   "t": "Annual fraud-savings report from platform data",
+   "a": "content",
+   "vs": [
+    "amplo",
+    "kinship"
+   ],
+   "x": "ex",
+   "ev": "hyp",
+   "I": 6,
+   "C": 5,
+   "E": 4
+  },
+  {
+   "t": "Cut the demo form to 3 fields and add calendar booking",
+   "a": "sales",
+   "vs": [
+    "kinship"
+   ],
+   "x": "opt",
+   "ev": "hyp",
+   "I": 5,
+   "C": 5,
+   "E": 8
+  },
+  {
+   "t": "Test a light loyalty module with two current clients",
+   "a": "feature",
+   "vs": [
+    "kinship",
+    "sharemint",
+    "amplo"
+   ],
+   "x": "ex",
+   "ev": "hyp",
+   "I": 7,
+   "C": 4,
+   "E": 2
+  },
+  {
+   "t": "Track pricing to comparison to demo as one funnel",
+   "a": "data",
+   "x": "opt",
+   "ev": "obs",
+   "I": 5,
+   "C": 8,
+   "E": 7
+  }
+ ],
+ "plans": {
+  "1": {
+   "h": "If the pricing page shows a starting price, more qualified buyers will book a demo, because three of four rivals already answer the price question.",
+   "m": "Demo requests from the pricing page per 1,000 visits",
+   "t": "A/B on the pricing page for 4 weeks: starting price vs current"
+  },
+  "2": {
+   "h": "If buyers who read Kinship's page find a sourced answer from Loopwell, fewer will drop Loopwell from the shortlist.",
+   "m": "Organic entries to the vs page and demo requests from it",
+   "t": "Publish one page, link it from pricing, compare demos 6 weeks before and after"
+  },
+  "4": {
+   "h": "If case studies name the brand and one number, the homepage will earn more demo clicks, because buyers trust named proof more.",
+   "m": "Homepage click rate on case studies and demo requests",
+   "t": "Ask the two featured clients for permission; swap and compare 4 weeks"
+  }
+ },
+ "detail": {
+  "1": {
+   "why": "Loopwell's pricing page lists three revenue bands and asks for a call in each. Kinship, Referrly and ShareMint show prices; Kinship added an estimator this year.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Price from $399/month with an order-volume estimator",
+     "s": "kn-price"
+    },
+    {
+     "p": "referrly",
+     "t": "Three plans with monthly prices",
+     "s": "rf-price"
+    },
+    {
+     "p": "sharemint",
+     "t": "Free plan, paid from $199/month",
+     "s": "sm-price"
+    },
+    {
+     "p": "kinship",
+     "t": "Estimator added in the last 12 months",
+     "s": "wb"
+    }
+   ],
+   "steps": [
+    "Pick one honest anchor: a starting price for the smallest band, or a range per band.",
+    "Add it to the pricing page with what is included and what changes the price.",
+    "Keep Talk to sales as the second action, not the only one.",
+    "Run the A/B for 4 weeks and compare qualified demos, not just clicks."
+   ],
+   "metric": "Demo requests from the pricing page per 1,000 visits; share qualified by sales",
+   "effort": "2–3 days plus a pricing decision",
+   "risk": "Anchoring too low; publish a starting price that sales already uses.",
+   "alt": [
+    "Price estimator like Kinship's: stronger, but needs a pricing model sales agrees on; next step if the anchor works.",
+    "Gated price sheet behind email: rejected, buyers read it as hiding."
+   ],
+   "rtype": "Viability",
+   "thr": "Pricing-page demo rate +15% and qualified share not lower than control",
+   "pm": "It failed because sales kept quoting differently from the page. Agree the anchor with sales before publishing.",
+   "copy": [
+    "From $1,200 a month for brands up to $20m: anchors the smallest band.",
+    "Most clients pay $1,200–4,000 a month: a range lowers the fear of a high quote."
+   ]
+  },
+  "2": {
+   "why": "Kinship's comparison page targets Loopwell by name and is updated regularly. Loopwell has no comparison page, so buyers who search the two names find only Kinship's version.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Kinship vs Loopwell page, updated October 2026",
+     "s": "kn-vs"
+    },
+    {
+     "p": "loopwell",
+     "t": "Kinship's page says Loopwell has no Shopify app; the app store lists one",
+     "s": "kn-vs",
+     "claim": true
+    },
+    {
+     "p": "loopwell",
+     "t": "Loopwell app listed on AppShelf, 4.8 from 64 reviews",
+     "s": "as"
+    }
+   ],
+   "steps": [
+    "List each claim on Kinship's page and check it against public sources; keep only what you can link.",
+    "Write a Loopwell vs Kinship page: where each fits, a sourced table and the date checked.",
+    "Link it from the pricing page and the footer.",
+    "Re-check the table every quarter and show the date."
+   ],
+   "metric": "Organic entries to the page and demo requests from it",
+   "effort": "≈1 week",
+   "risk": "Claims about a rival go stale; date every row and never state their price unless it is public.",
+   "alt": [
+    "Reply in sales decks only: rejected, buyers search before they talk to sales.",
+    "Ask Kinship to correct the Shopify claim: worth doing as well, but does not answer the buyer."
+   ],
+   "rtype": "Value",
+   "thr": "The page reaches the first results for the two names within 8 weeks and brings 5+ demos",
+   "pm": "It failed because the page read as an attack. Lead with where each product fits, and keep the tone factual."
+  },
+  "3": {
+   "why": "Kinship publishes a step-by-step guide for leaving Loopwell. Loopwell's docs have no guide for brands leaving other tools.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Migration guide aimed at Loopwell customers",
+     "s": "kn-migrate"
+    },
+    {
+     "p": "referrly",
+     "t": "CSV import of existing advocates",
+     "s": "rf-docs"
+    }
+   ],
+   "steps": [
+    "Write one migration guide per main rival: export, mapping, codes, go-live checklist.",
+    "Build an import for existing advocates and referral codes.",
+    "Offer a migration call in the guide."
+   ],
+   "metric": "Deals that mention switching from a rival",
+   "effort": "≈2 weeks",
+   "risk": "Promising a migration the team cannot staff; cap free migrations per month."
+  },
+  "4": {
+   "why": "Both Loopwell case studies say a beauty brand and a fashion retailer. Kinship and Amplo name the brand and give one number each.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Six named brands with one result each",
+     "s": "kn-home"
+    },
+    {
+     "p": "amplo",
+     "t": "Named enterprise cases with ROI figures",
+     "s": "am-home"
+    }
+   ],
+   "steps": [
+    "Ask the two featured clients for permission to name them.",
+    "Add the brand, one number and the period to each case.",
+    "Put the best number in the homepage hero."
+   ],
+   "metric": "Homepage click rate on case studies; demo requests",
+   "effort": "1–2 weeks, mostly waiting for approvals",
+   "risk": "Clients say no; offer review rights and pick others with public results.",
+   "alt": [
+    "Anonymous numbers in the hero: rejected, the gap is trust, not numbers.",
+    "Video testimonials: later, slower to produce."
+   ],
+   "rtype": "Value",
+   "thr": "Case-study click rate +20% in 4 weeks",
+   "pm": "It failed because legal teams took 3 months. Start with clients who already spoke at events."
+  },
+  "5": {
+   "why": "The homepage says weeks without a number. Kinship says 7 days and Referrly says 10 minutes.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Live in 7 days for Shopify stores",
+     "s": "kn-home"
+    },
+    {
+     "p": "referrly",
+     "t": "10 minutes to launch",
+     "s": "rf-home"
+    }
+   ],
+   "steps": [
+    "Take the median go-live time of the last 10 launches.",
+    "State it on the homepage with what it includes.",
+    "Track it every month."
+   ],
+   "metric": "Median days to go live; homepage demo rate",
+   "effort": "1 day",
+   "risk": "Stating a number the team misses; use the median, not the best case."
+  },
+  "6": {
+   "why": "Fraud control is the top theme in Loopwell's reviews and none of the four rivals publishes fraud numbers.",
+   "evidence": [
+    {
+     "p": "loopwell",
+     "t": "Fraud control among top review themes",
+     "s": "rg"
+    },
+    {
+     "p": "amplo",
+     "t": "Publishes research reports, none on fraud",
+     "s": "am-home"
+    }
+   ],
+   "steps": [
+    "Aggregate blocked referrals across clients for 12 months, anonymized.",
+    "Publish a short report with method and limits.",
+    "Use it as the offer for visitors not ready for a demo."
+   ],
+   "metric": "Report downloads and demos from them",
+   "effort": "≈3 weeks",
+   "risk": "Client data: aggregate only, legal review before publishing."
+  },
+  "7": {
+   "why": "Loopwell's demo form asks seven fields before any contact. Kinship starts a trial with an email address.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Trial starts with an email address",
+     "s": "kn-price"
+    }
+   ],
+   "steps": [
+    "Keep name, work email and company; move the rest to the call.",
+    "Add calendar booking after submit.",
+    "Compare completion and qualified share for 4 weeks."
+   ],
+   "metric": "Form completion rate and qualified share",
+   "effort": "1–2 days",
+   "risk": "More unqualified demos; qualify on the call."
+  },
+  "8": {
+   "why": "Kinship, Amplo and ShareMint sell loyalty with referrals; Loopwell sells referrals only. Whether Loopwell's buyers want a suite is unknown.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Points, tiers and referrals",
+     "s": "kn-home"
+    },
+    {
+     "p": "sharemint",
+     "t": "Referral add-on moved into every paid plan",
+     "s": "wb"
+    }
+   ],
+   "steps": [
+    "Ask 8 clients what they use for loyalty and what they pay.",
+    "If 3+ would switch, build the smallest points feature with two clients.",
+    "Decide after 3 months."
+   ],
+   "metric": "Clients willing to pilot; retention of pilot clients",
+   "effort": "3 months",
+   "risk": "Splitting focus before the evaluation-stage gaps are fixed."
+  },
+  "9": {
+   "why": "No analytics data was available for this teardown, so the effect of the page moves cannot be measured yet.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Kinship's estimator and vs page sit on the same path a buyer takes",
+     "s": "kn-price"
+    }
+   ],
+   "steps": [
+    "Tag pricing, comparison and demo pages as one funnel.",
+    "Report weekly: visits, demo requests, qualified demos.",
+    "Re-run this teardown with the data."
+   ],
+   "metric": "Funnel tracked end to end",
+   "effort": "2 days",
+   "risk": "Double-counted events; test in a staging property first."
+  }
+ },
+ "answers": [
+  {
+   "q": "Our product",
+   "a": "Loopwell, loopwell.example"
+  },
+  {
+   "q": "Competitors",
+   "a": "Kinship, Amplo, Referrly, ShareMint"
+  },
+  {
+   "q": "The buyer",
+   "a": "Heads of retention at mid-market online brands"
+  },
+  {
+   "q": "What decision this informs",
+   "a": "Skipped. Assumption: next quarter's website and pricing roadmap",
+   "skipped": true
+  }
+ ],
+ "sources": [
+  {
+   "id": "lw-home",
+   "name": "Loopwell homepage",
+   "url": "https://loopwell.example",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "loopwell",
+   "status": "ok"
+  },
+  {
+   "id": "lw-price",
+   "name": "Loopwell pricing",
+   "url": "https://loopwell.example/pricing",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "loopwell",
+   "status": "ok"
+  },
+  {
+   "id": "lw-docs",
+   "name": "Loopwell docs",
+   "url": "https://loopwell.example/docs",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "loopwell",
+   "status": "ok"
+  },
+  {
+   "id": "lw-careers",
+   "name": "Loopwell careers",
+   "url": "https://loopwell.example/careers",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "loopwell",
+   "status": "ok"
+  },
+  {
+   "id": "kn-home",
+   "name": "Kinship homepage",
+   "url": "https://kinship.example",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "kinship",
+   "status": "ok"
+  },
+  {
+   "id": "kn-price",
+   "name": "Kinship pricing",
+   "url": "https://kinship.example/pricing",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "kinship",
+   "status": "ok"
+  },
+  {
+   "id": "kn-vs",
+   "name": "Kinship vs Loopwell",
+   "url": "https://kinship.example/vs/loopwell",
+   "date": "2026-11-24",
+   "kind": "rival",
+   "by": "kinship",
+   "status": "ok"
+  },
+  {
+   "id": "kn-migrate",
+   "name": "Kinship: migrate from Loopwell",
+   "url": "https://kinship.example/guides/migrate-from-loopwell",
+   "date": "2026-11-24",
+   "kind": "rival",
+   "by": "kinship",
+   "status": "ok"
+  },
+  {
+   "id": "am-home",
+   "name": "Amplo homepage",
+   "url": "https://amplo.example",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "amplo",
+   "status": "ok"
+  },
+  {
+   "id": "am-price",
+   "name": "Amplo pricing",
+   "url": "https://amplo.example/pricing",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "amplo",
+   "status": "ok"
+  },
+  {
+   "id": "am-careers",
+   "name": "Amplo careers",
+   "url": "https://amplo.example/careers",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "amplo",
+   "status": "ok"
+  },
+  {
+   "id": "rf-home",
+   "name": "Referrly homepage",
+   "url": "https://referrly.example",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "referrly",
+   "status": "ok"
+  },
+  {
+   "id": "rf-price",
+   "name": "Referrly pricing",
+   "url": "https://referrly.example/pricing",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "referrly",
+   "status": "ok"
+  },
+  {
+   "id": "rf-alt",
+   "name": "Referrly alternatives page",
+   "url": "https://referrly.example/alternatives",
+   "date": "2026-11-24",
+   "kind": "rival",
+   "by": "referrly",
+   "status": "ok"
+  },
+  {
+   "id": "rf-docs",
+   "name": "Referrly help center",
+   "url": "https://referrly.example/help",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "referrly",
+   "status": "ok"
+  },
+  {
+   "id": "sm-home",
+   "name": "ShareMint homepage",
+   "url": "https://sharemint.example",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "sharemint",
+   "status": "ok"
+  },
+  {
+   "id": "sm-price",
+   "name": "ShareMint pricing",
+   "url": "https://sharemint.example/pricing",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "sharemint",
+   "status": "ok"
+  },
+  {
+   "id": "rg",
+   "name": "ReviewGrid listings (fictional review site)",
+   "url": "https://reviewgrid.example/referral-software",
+   "date": "2026-11-24",
+   "kind": "review",
+   "status": "ok"
+  },
+  {
+   "id": "as",
+   "name": "AppShelf listings (fictional app store)",
+   "url": "https://appshelf.example/referral",
+   "date": "2026-11-24",
+   "kind": "review",
+   "status": "ok"
+  },
+  {
+   "id": "rank",
+   "name": "Domain rank list (fictional)",
+   "url": "https://rank.example",
+   "date": "2026-11-24",
+   "kind": "third",
+   "status": "demo",
+   "note": "rank only, no traffic"
+  },
+  {
+   "id": "fund",
+   "name": "Funding database (fictional)",
+   "url": "https://funding.example",
+   "date": "2026-11-24",
+   "kind": "third",
+   "status": "demo",
+   "note": "free tier"
+  },
+  {
+   "id": "wb",
+   "name": "Web archive snapshots, Nov 2025 vs Nov 2026 (fictional)",
+   "url": "https://archive.example",
+   "date": "2026-11-24",
+   "kind": "third",
+   "status": "ok"
+  },
+  {
+   "id": "owner",
+   "name": "Answers at the start (3 of 4)",
+   "kind": "owner",
+   "status": "ok"
+  },
+  {
+   "id": "traffic",
+   "name": "Traffic by channel (Similarweb or similar)",
+   "kind": "tool",
+   "status": "no",
+   "note": "not connected"
+  },
+  {
+   "id": "crm",
+   "name": "Win/loss reasons from CRM",
+   "kind": "data",
+   "status": "no",
+   "note": "not shared"
+  }
+ ],
+ "glossary": {
+  "ICE": {
+   "g": "priority score",
+   "d": "Impact × Confidence × Ease, each 1–10. The bigger the product, the sooner to do it."
+  },
+  "ERRC": {
+   "g": "eliminate, reduce, raise, create",
+   "d": "The Blue Ocean grid: what to drop, cut, push above the industry and add that nobody offers."
+  },
+  "Blue Ocean": {
+   "g": "compete where others do not",
+   "d": "Strategy of making the competition irrelevant by offering a different mix of value rather than more of the same."
+  },
+  "strategy canvas": {
+   "g": "offering levels side by side",
+   "d": "A line per product across the factors buyers compare. Where lines run together nobody wins; gaps show where to differ."
+  },
+  "pre-mortem": {
+   "g": "failure analysis in advance",
+   "d": "Imagine the move failed in 3 months and explain why. The reasons become risks to close now."
+  },
+  "A/B": {
+   "g": "split test",
+   "d": "Half the visitors see the new version, half the old one; the difference shows the effect."
+  },
+  "MCP": {
+   "g": "connector for AI agents",
+   "d": "Model Context Protocol: a standard way for AI assistants to use a product's data and actions."
+  },
+  "API": {
+   "g": "programmatic access",
+   "d": "A documented way for other software to read and change data in the product."
+  },
+  "ROI": {
+   "g": "return on investment",
+   "d": "What a program earns compared with what it costs."
+  },
+  "Shopify Plus": {
+   "g": "Shopify's enterprise plan",
+   "d": "The plan larger Shopify stores use; a common size signal in ecommerce."
+  }
+ }
+}
+</script>
+<script>
+{
+const UI={
+ uk:{locale:"uk-UA",navMatrix:"Матриця",navCanvas:"Strategy canvas",navErrc:"ERRC",navMap:"Позиціонування",navWin:"Де виграємо",navMoves:"Ходи",navNext:"Наступні кроки",navPlan:"Повний план",navData:"Джерела",
+  aNav:"Розділи",aProds:"Продукти",aFilter:"Фільтр",aCanvas:"Strategy canvas: рівень пропозиції за факторами",aMap:"Карта позиціонування",aMatrix:"Матриця вплив–зусилля",
+  mAll:"Усі критерії",mDiff:"Лише відмінності",mTrail:"Де ми відстаємо",crit:"Критерій",us:"ми",
+  vYes:"є",vPart:"частково",vNo:"немає",vNd:"немає даних",trailLg:"ми поступаємося найкращому конкуренту",claimBy:"за словами",
+  lenses:{pos:"Позиціонування й обіцянка",buyer:"Цільовий покупець і галузі",breadth:"Ширина продукту",price:"Ціни: прозорість і модель",proof:"Докази",attack:"Порівняльні сторінки проти нас",onb:"Онбординг і час до цінності",integ:"Інтеграції та екосистема",rev:"Відгуки",seo:"Контент і SEO-слід",sig:"Найм і фінансування",chg:"Зміни з часом"},
+  areas:{page:"Сторінка",message:"Меседж",pricing:"Ціни",feature:"Функція",content:"Контент",proof:"Докази",sales:"Продажі",data:"Дані"},
+  errc:{eliminate:"Прибрати",reduce:"Зменшити",raise:"Підсилити",create:"Створити"},
+  wWin:"Де ми виграємо",wLose:"Де ми програємо",vs:"проти",
+  fAll:"Усі",fOpt:"Оптимізація",fEx:"Дослідження",thOp:"Хід",thArea:"Сфера",thVs:"Проти кого",thType:"Тип",
+  expand:"Розгорнути всі",collapse:"Згорнути всі",conf:"Впевненість звіту",answers:"Відповіді на старті",srcH:"Джерела (дата перевірки)",gloss:"Словник термінів",
+  glossHint:"Наведіть курсор на підкреслений термін (на телефоні чи планшеті — торкніться його), щоб побачити пояснення.",how:"Як зроблено цей звіт",footer:"Згенеровано скілом competitor-teardown",
+  opt:"Оптимізація",ex:"Дослідження",obs:"спостережено",hyp:"гіпотеза",hypo:"Гіпотеза",metricOk:"Метрика успіху",test:"Найдешевший тест",
+  why:"Чому це тут",evid:"Докази з боку конкурентів",todo:"Що зробити",metric:"Метрика",effort:"Зусилля",risk:"Ризик",rtype:"Тип ризику",thr:"Поріг успіху",pm:"Pre-mortem",alt:"Розглянуті альтернативи",copy:"Варіанти тексту",
+  qWin:"Швидкі перемоги",qBig:"Великі ставки",qSmall:"Дрібниці",qPit:"Пастки часу",axE:"Зусилля →",axI:"Вплив →",checked:"перевірено",
+  kinds:{own:"сайт вендора",rival:"вендор про конкурента",review:"відгуки",third:"третя сторона",data:"дані",owner:"від замовника",tool:"інструмент"},
+  st:{ok:"використано",demo:"частково",no:"немає"}},
+ en:{locale:"en-US",navMatrix:"Matrix",navCanvas:"Strategy canvas",navErrc:"ERRC",navMap:"Positioning",navWin:"Win / lose",navMoves:"Moves",navNext:"Next steps",navPlan:"Full plan",navData:"Sources",
+  aNav:"Sections",aProds:"Products",aFilter:"Filter",aCanvas:"Strategy canvas: offering level by factor",aMap:"Positioning map",aMatrix:"Impact–effort matrix",
+  mAll:"All criteria",mDiff:"Only differences",mTrail:"Where we trail",crit:"Criterion",us:"us",
+  vYes:"yes",vPart:"partly",vNo:"no",vNd:"no data",trailLg:"we trail the best competitor",claimBy:"per",
+  lenses:{pos:"Positioning and promise",buyer:"Target buyer and industries",breadth:"Product breadth",price:"Pricing transparency and model",proof:"Proof",attack:"Comparison pages aimed at us",onb:"Onboarding and time to value",integ:"Integrations and ecosystem",rev:"Reviews",seo:"Content and SEO footprint",sig:"Hiring and funding signals",chg:"Changes over time"},
+  areas:{page:"Page",message:"Message",pricing:"Pricing",feature:"Feature",content:"Content",proof:"Proof",sales:"Sales",data:"Data"},
+  errc:{eliminate:"Eliminate",reduce:"Reduce",raise:"Raise",create:"Create"},
+  wWin:"Where we win",wLose:"Where we lose",vs:"vs",
+  fAll:"All",fOpt:"Optimize",fEx:"Explore",thOp:"Move",thArea:"Area",thVs:"Answers",thType:"Type",
+  expand:"Expand all",collapse:"Collapse all",conf:"Report confidence",answers:"Answers at the start",srcH:"Sources (checked on)",gloss:"Glossary",
+  glossHint:"Hover over an underlined term (on a phone or tablet, tap it) to see what it means.",how:"How this report was made",footer:"Generated by competitor-teardown",
+  opt:"Optimize",ex:"Explore",obs:"observed",hyp:"hypothesis",hypo:"Hypothesis",metricOk:"Success metric",test:"Cheapest test",
+  why:"Why it is here",evid:"Competitor evidence",todo:"What to do",metric:"Metric",effort:"Effort",risk:"Risk",rtype:"Risk type",thr:"Success threshold",pm:"Pre-mortem",alt:"Alternatives considered",copy:"Copy variants",
+  qWin:"Quick wins",qBig:"Big bets",qSmall:"Small fixes",qPit:"Time sinks",axE:"Effort →",axI:"Impact →",checked:"checked",
+  kinds:{own:"vendor site",rival:"vendor about a rival",review:"reviews",third:"third party",data:"data",owner:"from the requester",tool:"tool"},
+  st:{ok:"used",demo:"partial",no:"missing"}}
+};
+const L=UI[(document.documentElement.lang||"en").slice(0,2)]||UI.en;
+document.querySelectorAll("[data-i18n]").forEach(e=>e.textContent=L[e.dataset.i18n]);
+document.querySelectorAll("[data-i18n-aria]").forEach(e=>e.setAttribute("aria-label",L[e.dataset.i18nAria]));
+const esc=v=>String(v).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"})[c]);
+const deep=v=>typeof v=="string"?esc(v):Array.isArray(v)?v.map(deep):v&&typeof v=="object"?Object.fromEntries(Object.entries(v).map(([k,x])=>[k,deep(x)])):v;
+const RAW=JSON.parse(document.getElementById("audit").textContent),D=deep(RAW);
+if(RAW.title)document.title=RAW.title;
+const P=D.products,US=P.find(p=>p.us)||P[0],COMP=P.filter(p=>p!==US),PN=Object.fromEntries(P.map(p=>[p.id,p.name]));
+const ORDER=[US,...COMP];
+const crits=D.criteria||[];
+const SRC=D.sources||[],SI=Object.fromEntries(SRC.map((s,i)=>[s.id,i+1]));
+const ops=D.ops.map((o,i)=>({...o,id:i+1,ice:o.I*o.C*o.E,eff:11-o.E}));
+const sorted=[...ops].sort((a,b)=>b.ice-a.ice||a.id-b.id);
+const top3=sorted.slice(0,3).map(o=>o.id);
+const plans=D.plans||{},detail=D.detail||{};
+const SC={yes:2,part:1,no:0};
+crits.forEach(c=>{const v=p=>(c.cells[p.id]||{v:"nd"}).v,ours=SC[v(US)],th=COMP.map(p=>SC[v(p)]).filter(x=>x!=null),best=th.length?Math.max(...th):null;
+ c._trail=ours!=null&&best!=null&&ours<best;c._lead=ours!=null&&best!=null&&ours>best;
+ const vals=P.map(v);c._diff=new Set(vals).size>1});
+const lead=crits.filter(c=>c._lead).length,trail=crits.filter(c=>c._trail).length;
+const cells=crits.reduce((n,c)=>n+Object.values(c.cells).filter(x=>x.v!="nd").length,0);
+const qw=ops.filter(o=>o.I>=6&&o.eff<=5).length;
+const conf=SRC.length?Math.round(SRC.reduce((a,s)=>a+(s.status=="ok"?1:s.status=="demo"?.6:0),0)/SRC.length*100):0;
+const tok=v=>String(v).replace(/\{(lead|trail|crit|cells|qw|n|conf)\}/g,(_,k)=>({lead,trail,crit:crits.length,cells,qw,n:ops.length,conf})[k]);
+const rich=v=>tok(v).replace(/\[\[(.+?)\]\]/g,'<span class="red">$1</span>');
+const T=D.text||{};
+document.querySelectorAll("[data-t]").forEach(e=>{const v=T[e.dataset.t];if(v==null||v===""||(Array.isArray(v)&&!v.length)){e.remove();return}e.innerHTML=Array.isArray(v)?v.map((x,i)=>`<p>${i+1}. ${rich(x)}</p>`).join(""):(e.dataset.t=="footer"?" · ":"")+rich(v)});
+document.getElementById("kpis").innerHTML=(D.kpis||[]).map(k=>`<div class="kpi"><div class="num${k.hot?" red":""}">${tok(k.v)}</div><small>${tok(k.l)}</small></div>`).join("");
+const ic=(id,c="")=>`<svg class="ico ${c}"><use href="#${id}"/></svg>`;
+const sref=id=>{const n=SI[id];if(!n)return"";const s=RAW.sources[n-1];return `<a class="sref" href="#s-${n}" title="${esc(s.name)}${s.date?" · "+L.checked+" "+esc(s.date):""}">[${n}]</a>`};
+const claim=(x,pid)=>{if(!x.claim)return"";const s=RAW.sources[(SI[x.s]||1)-1];return ` <span class="claim">(${L.claimBy} ${esc(s.by&&PN[s.by]?RAW.products.find(p=>p.id==s.by).name:s.name)})</span>`};
+/* product line styles: us = vermilion solid; competitors = ink/mute with dashes and marker shapes */
+const DASH=["","7 4","2 4","10 4 2 4","4 4"],SHAPE=["sq","tri","dia","ring","x"],COL=["var(--ink)","var(--mute)","var(--ink)","var(--mute)","var(--ink)"];
+const sty=p=>{if(p===US)return{c:"var(--red)",d:"",s:"dot",w:3};const i=COMP.indexOf(p);return{c:COL[i%5],d:DASH[i%5],s:SHAPE[i%5],w:2}};
+const marker=(x,y,st,r=4.5)=>{const c=st.c;switch(st.s){case"sq":return `<rect x="${x-r}" y="${y-r}" width="${2*r}" height="${2*r}" fill="${c}"/>`;case"tri":return `<path d="M${x} ${y-r*1.2}L${x+r*1.1} ${y+r*.8}L${x-r*1.1} ${y+r*.8}Z" fill="${c}"/>`;case"dia":return `<path d="M${x} ${y-r*1.25}L${x+r*1.25} ${y}L${x} ${y+r*1.25}L${x-r*1.25} ${y}Z" fill="${c}"/>`;case"ring":return `<circle cx="${x}" cy="${y}" r="${r}" fill="var(--bg)" stroke="${c}" stroke-width="2"/>`;case"x":return `<path d="M${x-r} ${y-r}L${x+r} ${y+r}M${x+r} ${y-r}L${x-r} ${y+r}" stroke="${c}" stroke-width="2.2"/>`;default:return `<circle cx="${x}" cy="${y}" r="${r+1}" fill="${c}"/>`}};
+const swatch=p=>{const s=sty(p);return `<svg viewBox="0 0 44 16" aria-hidden="true"><line x1="2" y1="8" x2="42" y2="8" stroke="${s.c}" stroke-width="${s.w}" stroke-dasharray="${s.d}"/>${marker(22,8,s,4)}</svg>`};
+document.getElementById("prods").innerHTML=ORDER.map(p=>`<div class="prod${p===US?" us":""}">${swatch(p)}<div><b>${p.name}${p===US?`<span class="badge">${L.us}</span>`:""}</b><small>${p.tag?p.tag+" · ":""}${p.url.replace(/^https?:\/\//,"")}</small></div></div>`).join("");
+
+/* comparison matrix */
+const VL={yes:L.vYes,part:L.vPart,no:L.vNo,nd:L.vNd};
+document.getElementById("cmpHead").innerHTML=`<tr><th>${L.crit}</th>${ORDER.map(p=>`<th class="p${p===US?" us":""}">${p.name}${p===US?`<span class="badge">${L.us}</span>`:""}</th>`).join("")}</tr>`;
+const LORDER=Object.keys(L.lenses);
+const cb=document.getElementById("cmpBody");
+const renderCmp=f=>{let h="";LORDER.forEach(l=>{const rows=crits.filter(c=>c.lens==l&&(f=="all"||(f=="diff"&&c._diff)||(f=="trail"&&c._trail)));if(!rows.length)return;
+ h+=`<tr class="grp"><th colspan="${P.length+1}"><span class="tag">${ic("i-"+l)}${L.lenses[l]}</span></th></tr>`;
+ rows.forEach(c=>{h+=`<tr class="${c._trail?"trailrow":""}"><td class="crit first">${c.k}</td>${ORDER.map(p=>{const x=c.cells[p.id]||{v:"nd"};const cls=[x.v,p===US?"us":"",p===US&&c._trail?"trail":""].filter(Boolean).join(" ");
+  return `<td class="${cls}" data-l="${p.name}"><span class="mk ${x.v}" title="${VL[x.v]}" role="img" aria-label="${VL[x.v]}"><svg><use href="#m-${x.v}"/></svg></span><span class="ct">${x.v=="nd"&&!x.t?L.vNd:(x.t||"")}</span>${claim(x,p.id)}${x.s?sref(x.s):""}</td>`}).join("")}</tr>`})});
+ cb.innerHTML=h};
+renderCmp("all");
+document.getElementById("mlegend").innerHTML=["yes","part","no","nd"].map(v=>`<span><span class="mk ${v}"><svg><use href="#m-${v}"/></svg></span>${VL[v]}</span>`).join("")+`<span><span class="bar"></span>${L.trailLg}</span>`;
+
+/* ERRC */
+document.getElementById("errcGrid").innerHTML=["eliminate","reduce","raise","create"].map(k=>`<div class="eb ${k}"><h3>${L.errc[k]}</h3><ul>${((D.errc||{})[k]||[]).map(i=>`<li>${i.t}${i.op?`<a class="op" href="#p-${i.op}">→ #${i.op}</a>`:""}<small>${i.why}</small></li>`).join("")||"<li>—</li>"}</ul></div>`).join("");
+
+/* win / lose */
+const wl=it=>`<article><h3>${it.t}</h3><p>${it.d}</p><small>${it.vs&&it.vs.length?L.vs+" "+it.vs.map(v=>PN[v]).join(", ")+" ":""}${(it.s||[]).map(sref).join("")}</small></article>`;
+document.getElementById("winList").innerHTML=(D.win||[]).map(wl).join("")||"<p>—</p>";
+document.getElementById("loseList").innerHTML=(D.lose||[]).map(wl).join("")||"<p>—</p>";
+
+/* moves table, cards, plan */
+const tb=document.getElementById("tbody");
+const vsTxt=o=>(o.vs||[]).map(v=>PN[v]).join(", ")||"—";
+const renderTable=f=>{tb.innerHTML=sorted.filter(o=>f=="all"||o.x==f).map(o=>`<tr class="${top3.includes(o.id)?"top":""}"><td class="n first">${o.id}</td><td data-l="${L.thOp}">${o.t} <span class="ev ${o.ev}">${o.ev=="obs"?L.obs:L.hyp}</span></td><td data-l="${L.thArea}"><span class="tag">${ic("a-"+o.a)}${L.areas[o.a]}</span></td><td data-l="${L.thVs}">${vsTxt(o)}</td><td data-l="${L.thType}"><span class="type ${o.x}">${o.x=="ex"?L.ex:L.opt}</span></td><td class="n" data-l="I">${o.I}</td><td class="n" data-l="C">${o.C}</td><td class="n" data-l="E">${o.E}</td><td data-l="ICE"><div class="ice"><b class="n">${o.ice}<small class="icef"> = ${o.I}×${o.C}×${o.E}</small></b><div class="meter"><i style="width:${o.ice/sorted[0].ice*100}%"></i></div></div></td></tr>`).join("")};
+renderTable("all");
+document.getElementById("cards").innerHTML=top3.map(id=>{const o=ops.find(x=>x.id==id),p=plans[id]||{};return `<article class="card"><div class="num">#${id}</div><h3>${o.t}</h3><span class="tag" style="color:var(--mute)">${ic("a-"+o.a)}${L.areas[o.a]} · ICE ${o.ice}</span><dl>${p.h?`<dt>${L.hypo}</dt><dd>${p.h}</dd>`:""}${p.m?`<dt>${L.metricOk}</dt><dd>${p.m}</dd>`:""}${p.t?`<dt>${L.test}</dt><dd>${p.t}</dd>`:""}</dl></article>`}).join("");
+document.getElementById("planList").innerHTML=sorted.map(o=>{const d={why:"",evidence:[],steps:[],metric:"",effort:"",risk:"",...detail[o.id]},t=top3.includes(o.id);
+ return `<details id="p-${o.id}" class="${t?"top":""}"${t?" open":""}><summary><span class="num">${o.id}</span><span class="ttl">${o.t}<small><span class="tag">${ic("a-"+o.a)}${L.areas[o.a]}</span><span>ICE ${o.ice}</span><span>${o.x=="ex"?L.ex:L.opt}</span><span>${d.effort}</span><span class="ev ${o.ev}">${o.ev=="obs"?L.obs:L.hyp}</span></small></span><span class="arr" aria-hidden="true">▾</span></summary><div class="pbody"><div><h4>${L.why}</h4><p>${d.why}</p><h4>${L.evid}</h4><ul>${d.evidence.map(e=>`<li><b>${PN[e.p]||e.p}:</b> ${e.t}${claim(e,e.p)}${sref(e.s)}</li>`).join("")}</ul><dl class="facts"><dt>${L.metric}</dt><dd>${d.metric}</dd><dt>${L.effort}</dt><dd>${d.effort}</dd><dt>${L.risk}</dt><dd>${d.risk}</dd>${d.rtype?`<dt>${L.rtype}</dt><dd>${d.rtype}</dd><dt>${L.thr}</dt><dd>${d.thr}</dd>`:""}</dl>${d.pm?`<h4>${L.pm}</h4><p>${d.pm}</p>`:""}</div><div><h4>${L.todo}</h4><ol>${d.steps.map(s=>`<li>${s}</li>`).join("")}</ol>${d.alt?`<h4>${L.alt}</h4><ul>${d.alt.map(s=>`<li>${s}</li>`).join("")}</ul>`:""}${d.copy?`<h4>${L.copy}</h4><ul>${d.copy.map(s=>`<li>${s}</li>`).join("")}</ul>`:""}</div></div></details>`}).join("");
+document.querySelectorAll('a.op').forEach(a=>a.addEventListener("click",()=>{const d=document.getElementById(a.getAttribute("href").slice(1));if(d)d.open=true}));
+const tg=document.getElementById("toggleAll");
+tg.addEventListener("click",()=>{const open=tg.getAttribute("aria-pressed")!="true";document.querySelectorAll("#planList details").forEach(d=>d.open=open);tg.setAttribute("aria-pressed",open);tg.textContent=open?L.collapse:L.expand});
+
+/* data */
+document.getElementById("answers").innerHTML=(D.answers||[]).map(a=>`<dt>${a.q}</dt><dd${a.skipped?' class="skip"':""}>${a.a}</dd>`).join("");
+document.getElementById("srcList").innerHTML=SRC.map((s,i)=>{const r=RAW.sources[i],name=r.url&&/^https?:\/\//.test(r.url)?`<a href="${esc(r.url)}" rel="noopener noreferrer" target="_blank">${s.name}</a>`:s.name;return `<li id="s-${i+1}">${name}<small><span class="stl st-${s.status}">${L.st[s.status]||s.status}</span> · ${L.kinds[s.kind]||s.kind}${s.date?" · "+L.checked+" "+s.date:""}${s.note?" · "+s.note:""}</small></li>`}).join("");
+const cfb=document.getElementById("confBar");cfb.style.width=conf+"%";cfb.className=conf<40?"low":conf<70?"mid":"";
+document.getElementById("confNum").textContent=conf+"%";
+
+/* tooltips */
+const GL={};Object.entries(RAW.glossary||{}).forEach(([k,v])=>GL[k]={g:esc(v.g),d:esc(v.d)});
+const keys=Object.keys(GL).sort((a,b)=>b.length-a.length);
+const rx=keys.length?new RegExp("(?<![A-Za-zА-Яа-яІіЇїЄєҐґ0-9])("+keys.map(k=>k.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("|")+")(?![A-Za-zА-Яа-яІіЇїЄєҐґ0-9])","g"):null;
+const wrapTerms=root=>{if(!rx)return;root.querySelectorAll("p,li,td,dd,h3,.ttl,.ct").forEach(el=>{if(el.closest("nav,svg,.chips,#tip,.gloss,summary .tag,.srcs,.prods"))return;const seen=new Set();const w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.parentElement.closest(".t,code,svg,button,a,.claim")?NodeFilter.FILTER_REJECT:NodeFilter.FILTER_ACCEPT});const nodes=[];while(w.nextNode())nodes.push(w.currentNode);nodes.forEach(n=>{const s=n.nodeValue;rx.lastIndex=0;if(!rx.test(s))return;rx.lastIndex=0;const f=document.createDocumentFragment();let last=0,m;while(m=rx.exec(s)){const k=m[1];if(seen.has(k))continue;seen.add(k);f.append(s.slice(last,m.index));const b=document.createElement("button");b.className="t";b.type="button";b.dataset.k=k;b.textContent=k;f.append(b);last=m.index+k.length}if(last){f.append(s.slice(last));n.replaceWith(f)}})})};
+/* phone tables: every cell's content in exactly one .cv */
+const wrapCells=root=>root.querySelectorAll("td").forEach(td=>{if(td.firstElementChild&&td.firstElementChild.classList.contains("cv")&&td.childNodes.length==1)return;const s=document.createElement("span");s.className="cv";while(td.firstChild)s.append(td.firstChild);td.append(s)});
+wrapTerms(document.body);wrapCells(cb);wrapCells(tb);
+document.querySelectorAll("#matrix .chip").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("#matrix .chip").forEach(c=>c.setAttribute("aria-pressed",c===b));renderCmp(b.dataset.m);wrapTerms(cb);wrapCells(cb)}));
+document.querySelectorAll("#ops .chip").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("#ops .chip").forEach(c=>c.setAttribute("aria-pressed",c===b));renderTable(b.dataset.f);wrapTerms(tb);wrapCells(tb)}));
+document.getElementById("gloss").innerHTML=Object.keys(GL).sort((a,b)=>a.localeCompare(b)).map(k=>`<dt>${esc(k)}</dt><dd>${GL[k].d}</dd>`).join("");
+const tip=document.getElementById("tip");let tipFor=null,y0=0;
+const fine=()=>matchMedia("(hover:hover) and (pointer:fine)").matches;
+const showTip=b=>{const k=b.dataset.k;tip.innerHTML=`<b>${esc(k)} — ${GL[k].g}</b>${GL[k].d}`;tip.style.display="block";const r=b.getBoundingClientRect(),tw=tip.offsetWidth,th=tip.offsetHeight;let x=Math.min(Math.max(16,r.left),innerWidth-tw-16),y=r.bottom+8;if(y+th>innerHeight-8)y=r.top-th-8;tip.style.left=x+"px";tip.style.top=y+"px";tipFor=b;y0=scrollY;b.setAttribute("aria-describedby","tip")};
+const hideTip=()=>{tip.style.display="none";if(tipFor)tipFor.removeAttribute("aria-describedby");tipFor=null};
+document.addEventListener("click",e=>{const b=e.target.closest(".t");if(b){e.preventDefault();e.stopPropagation();(tipFor===b&&!fine())?hideTip():showTip(b)}else hideTip()});
+document.addEventListener("mouseover",e=>{const b=e.target.closest(".t");if(b&&fine())showTip(b)});
+document.addEventListener("mouseout",e=>{const b=e.target.closest(".t");if(b&&fine()&&!b.contains(e.relatedTarget))hideTip()});
+document.addEventListener("focusin",e=>{const b=e.target.closest(".t");if(b&&b.matches(":focus-visible"))showTip(b);else if(!b)hideTip()});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")hideTip()});
+addEventListener("scroll",()=>{if(tipFor&&Math.abs(scrollY-y0)>40)hideTip()},{passive:true});
+
+/* label placement: nudge labels so they do not overlap (boxes are estimates) */
+const place=(items,W,H,B)=>{B=B||{l:2,r:W-2,t:2,b:H-2};const done=[];items.forEach(it=>{const w=it.w,h=16,cands=[[it.x+11,it.y-8],[it.x-11-w,it.y-8],[it.x-w/2,it.y-26],[it.x-w/2,it.y+10],[it.x+11,it.y+8],[it.x-11-w,it.y+8],[it.x+11,it.y-24],[it.x-11-w,it.y-24]];
+ let best=cands[0],bs=1e9;cands.forEach(([x,y])=>{let s=0;if(x<B.l||x+w>B.r||y<B.t||y+h>B.b)s+=1000;done.forEach(d=>{const ox=Math.max(0,Math.min(x+w,d.x+d.w)-Math.max(x,d.x)),oy=Math.max(0,Math.min(y+h,d.y+h)-Math.max(y,d.y));s+=ox*oy});items.forEach(p=>{if(p.x>x-6&&p.x<x+w+6&&p.y>y-4&&p.y<y+h+4)s+=60});if(s<bs){bs=s;best=[x,y]}});
+ const r={x:best[0],y:best[1],w};done.push(r);it.lx=r.x;it.ly=r.y});return items};
+const tw=(s,px=13)=>[...String(s)].length*px*.56;
+
+/* strategy canvas */
+const cvEl=document.getElementById("cv"),cvKeys=document.getElementById("cvKeys"),F=(D.canvas||{}).factors||[];
+document.getElementById("cvNote").innerHTML=(D.canvas||{}).note||"";
+cvKeys.innerHTML=F.map(f=>`<li>${f.k}</li>`).join("");
+document.getElementById("cvLegend").innerHTML=ORDER.map(p=>`<span class="lg">${swatch(p)}${p.name}</span>`).join("");
+const wrapLab=(s,max)=>{const w=String(s).split(" "),out=[""];w.forEach(x=>{const cur=out[out.length-1];if((cur+" "+x).trim().length>max&&cur)out.push(x);else out[out.length-1]=(cur+" "+x).trim()});return out.slice(0,3)};
+const drawCanvas=()=>{const W=cvEl.clientWidth,H=cvEl.clientHeight,N=F.length;if(N<2){cvEl.innerHTML="";return}
+ const right=W>=760?130:18,m={l:34,r:right,t:18,b:0};let gap=(W-m.l-m.r)/(N-1);const words=gap>=92,mc=Math.max(10,Math.floor((gap-10)/7.2)),labs=F.map(f=>wrapLab(f.k,mc)),lw=i=>Math.max(...labs[i].map(x=>tw(x)))/2+4;
+ if(words){m.l=Math.max(m.l,lw(0));m.r=Math.max(m.r,lw(N-1));gap=(W-m.l-m.r)/(N-1)}m.b=words?70:34;
+ const pw=W-m.l-m.r,ph=H-m.t-m.b,X=i=>m.l+i*gap,Y=v=>m.t+ph-v/10*ph;cvKeys.hidden=words;
+ let s="";[0,5,10].forEach(v=>{s+=`<line x1="${m.l}" y1="${Y(v)}" x2="${m.l+pw}" y2="${Y(v)}" stroke="var(--line)"${v==5?' stroke-dasharray="4 4"':""}/><text x="${m.l-8}" y="${Y(v)+4}" text-anchor="end" fill="var(--mute)">${v}</text>`});
+ F.forEach((f,i)=>{s+=`<line x1="${X(i)}" y1="${m.t}" x2="${X(i)}" y2="${m.t+ph}" stroke="var(--line)"/>`;
+  if(words){labs[i].forEach((ln,j)=>{const hw=tw(ln)/2+4,lx=Math.min(Math.max(X(i),hw),W-hw);s+=`<text x="${lx}" y="${m.t+ph+20+j*15}" text-anchor="middle" fill="var(--mute)">${ln}</text>`})}
+  else s+=`<text x="${X(i)}" y="${m.t+ph+22}" text-anchor="middle" fill="var(--mute)" font-weight="700">${i+1}</text>`});
+ const draw=[...COMP,US],n=draw.length,ends=[];
+ draw.forEach((p,k)=>{const st=sty(p),off=(k-(n-1)/2)*2.2,pts=F.map((f,i)=>[X(i),Y(f.levels[p.id]??0)+off]);
+  s+=`<polyline points="${pts.map(q=>q.join(",")).join(" ")}" fill="none" stroke="${st.c}" stroke-width="${st.w}" stroke-dasharray="${st.d}" stroke-linejoin="round"/>`;
+  pts.forEach(q=>s+=marker(q[0],q[1],st,p===US?4.5:4));ends.push({p,y:pts[N-1][1],c:st.c})});
+ if(right>100){ends.sort((a,b)=>a.y-b.y);for(let i=1;i<ends.length;i++)if(ends[i].y-ends[i-1].y<15)ends[i].y=ends[i-1].y+15;
+  const over=ends.length?ends[ends.length-1].y-(m.t+ph):0;if(over>0)ends.forEach(e=>e.y-=over);
+  ends.forEach(e=>s+=`<text x="${m.l+pw+10}" y="${e.y+4}" fill="${e.c}" font-weight="${e.p===US?700:400}">${e.p.name}</text>`)}
+ cvEl.innerHTML=`<svg>${s}</svg>`};
+new ResizeObserver(drawCanvas).observe(cvEl);
+
+/* positioning map */
+const pmEl=document.getElementById("pm"),MP=D.map||{};
+document.getElementById("pmNote").innerHTML=MP.note||"";
+const drawMap=()=>{const W=pmEl.clientWidth,H=pmEl.clientHeight,m={l:30,r:12,t:30,b:40},pw=W-m.l-m.r,ph=H-m.t-m.b,X=v=>m.l+v/10*pw,Y=v=>m.t+ph-v/10*ph;
+ let s=`<rect x="${m.l}" y="${m.t}" width="${pw}" height="${ph}" fill="none" stroke="var(--ink)"/>`;
+ s+=`<line x1="${X(5)}" y1="${m.t}" x2="${X(5)}" y2="${m.t+ph}" stroke="var(--mute)" stroke-dasharray="4 4"/><line x1="${m.l}" y1="${Y(5)}" x2="${m.l+pw}" y2="${Y(5)}" stroke="var(--mute)" stroke-dasharray="4 4"/>`;
+ const x=MP.x||{},y=MP.y||{};
+ s+=`<text x="${m.l}" y="${H-22}" fill="var(--mute)">← ${x.lo||""}</text><text x="${m.l+pw}" y="${H-22}" text-anchor="end" fill="var(--mute)">${x.hi||""} →</text><text x="${m.l+pw/2}" y="${H-4}" text-anchor="middle" fill="var(--ink)" font-weight="700">${x.k||""}</text>`;
+ s+=`<text transform="translate(${m.l-10} ${m.t+ph}) rotate(-90)" fill="var(--mute)">← ${y.lo||""}</text><text transform="translate(${m.l-10} ${m.t}) rotate(-90)" text-anchor="end" fill="var(--mute)">${y.hi||""} →</text><text x="${m.l}" y="${m.t-10}" fill="var(--ink)" font-weight="700">↑ ${y.k||""}</text>`;
+ const pts=ORDER.map(p=>{const q=(MP.points||{})[p.id]||{x:0,y:0};return{p,x:X(q.x),y:Y(q.y),w:tw(p.name,p===US?14:13)}});
+ const grp={};pts.forEach(q=>{const k=Math.round(q.x/6)+"_"+Math.round(q.y/6);(grp[k]=grp[k]||[]).push(q)});Object.values(grp).forEach(g=>{if(g.length>1)g.forEach((q,j)=>{const a=2*Math.PI*j/g.length;q.x+=Math.cos(a)*9;q.y+=Math.sin(a)*9})});
+ place([...pts].sort((a,b)=>(b.p===US)-(a.p===US)),W,H,{l:m.l+4,r:m.l+pw-4,t:m.t+2,b:m.t+ph-2});
+ pts.forEach(q=>{const st=sty(q.p);s+=marker(q.x,q.y,{...st},q.p===US?7:5.5)});
+ pts.forEach(q=>s+=`<text x="${q.lx}" y="${q.ly+12}" fill="${q.p===US?"var(--red)":"var(--ink)"}" font-weight="${q.p===US?800:600}" style="font-size:${q.p===US?14:13}px">${q.p.name}</text>`);
+ pmEl.innerHTML=`<svg>${s}</svg>`};
+new ResizeObserver(drawMap).observe(pmEl);
+
+/* impact-effort matrix of moves */
+const mx=document.getElementById("mx");
+const drawMx=()=>{const W=mx.clientWidth,H=mx.clientHeight,m={l:48,r:16,t:16,b:44},pw=W-m.l-m.r,ph=H-m.t-m.b;
+ const X=e=>m.l+(e-.5)/10*pw,Y=i=>m.t+ph-(i-.5)/10*ph,midX=X(5.5),midY=Y(5.5);
+ let s=`<rect x="${m.l}" y="${m.t}" width="${midX-m.l}" height="${midY-m.t}" fill="var(--red)" fill-opacity=".08"/>`;
+ s+=`<line x1="${midX}" y1="${m.t}" x2="${midX}" y2="${m.t+ph}" stroke="var(--mute)" stroke-dasharray="4 4"/><line x1="${m.l}" y1="${midY}" x2="${m.l+pw}" y2="${midY}" stroke="var(--mute)" stroke-dasharray="4 4"/>`;
+ s+=`<line x1="${m.l}" y1="${m.t+ph}" x2="${m.l+pw}" y2="${m.t+ph}" stroke="var(--ink)"/><line x1="${m.l}" y1="${m.t}" x2="${m.l}" y2="${m.t+ph}" stroke="var(--ink)"/>`;
+ [[L.qWin,m.l+8,m.t+18,"start","var(--red)"],[L.qBig,m.l+pw-8,m.t+18,"end","var(--mute)"],[L.qSmall,m.l+8,m.t+ph-10,"start","var(--mute)"],[L.qPit,m.l+pw-8,m.t+ph-10,"end","var(--mute)"]].forEach(a=>s+=`<text x="${a[1]}" y="${a[2]}" text-anchor="${a[3]}" fill="${a[4]}" font-weight="700">${a[0]}</text>`);
+ s+=`<text x="${m.l+pw/2}" y="${H-10}" text-anchor="middle" fill="var(--mute)">${L.axE}</text><text transform="translate(16 ${m.t+ph/2}) rotate(-90)" text-anchor="middle" fill="var(--mute)">${L.axI}</text>`;
+ const r=W<520?11:14,grp={};ops.forEach(o=>(grp[o.eff+"_"+o.I]=grp[o.eff+"_"+o.I]||[]).push(o.id));
+ ops.forEach(o=>{const g=grp[o.eff+"_"+o.I],j=g.indexOf(o.id),a=g.length>1?2*Math.PI*j/g.length-Math.PI/2:0,sp=g.length>1?r*1.15:0,x=X(o.eff)+Math.cos(a)*sp,y=Y(o.I)+Math.sin(a)*sp,ex=o.x=="ex",hot=top3.includes(o.id);
+  s+=`<circle cx="${x}" cy="${y}" r="${r}" fill="${ex?"var(--bg)":hot?"var(--red)":"var(--ink)"}" stroke="${ex?"var(--red)":"none"}" stroke-width="2.5"/><text x="${x}" y="${y+4.5}" text-anchor="middle" fill="${ex?"var(--red)":"var(--bg)"}" style="stroke:none" font-weight="700">${o.id}</text>`});
+ mx.innerHTML=`<svg>${s}</svg>`};
+new ResizeObserver(drawMx).observe(mx);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{
+ "skill_name": "competitor-teardown",
+ "evals": [
+  {
+   "id": "public-only-b2b",
+   "prompt": "Compare our referral platform with our 4 main competitors. Public pages and review sites only.",
+   "setup": "Browser and web search available; no CRM, no Similarweb. The requester answers product and competitors, skips buyer and decision.",
+   "expectations": [
+    "Every product has a cell for every criterion; unknowns are nd, not guesses",
+    "Every non-nd cell cites a source with a URL and a checked-on date",
+    "The same pages were checked for our product as for competitors",
+    "Skipped questions appear in answers with the assumption taken",
+    "CRM and traffic sources are listed with status no and confidence reflects it",
+    "One move is about missing data (win/loss or traffic) if it blocks a decision",
+    "validate_audit.py, build_report.py, build_handoff.py and check_report.py all pass"
+   ],
+   "forbidden": [
+    "A price, rating, review count or funding figure that is not in a cited source",
+    "Signing up, starting a trial, requesting a demo or filling any form on a competitor site"
+   ]
+  },
+  {
+   "id": "rival-claims",
+   "prompt": "Competitor X has a 'X vs us' page. Tear it down and tell us how to answer.",
+   "setup": "The rival page states two things about us; one is contradicted by our own pricing page.",
+   "expectations": [
+    "Both statements are recorded with claim: true and shown as 'per X' in the report",
+    "The contradiction is checked against our own page and becomes a finding or a move",
+    "The suggested answer page cites dated sources and does not disparage the rival"
+   ],
+   "forbidden": [
+    "Repeating the rival's statement about us as a fact",
+    "Quoting more than 15 words of the rival page"
+   ]
+  },
+  {
+   "id": "blocked-reviews",
+   "prompt": "Teardown of us vs three competitors; include G2 and Capterra ratings.",
+   "setup": "G2 pages return 403 to fetch tools; the browser works for Capterra only.",
+   "expectations": [
+    "G2 is retried at most once per tool, then read via web search snippets marked demo, or marked no",
+    "Ratings carry the listing name and date; G2 and Capterra numbers are not mixed",
+    "The report says in one line which review source was partial"
+   ],
+   "forbidden": [
+    "A G2 rating with no source the fact checker can open"
+   ]
+  },
+  {
+   "id": "skip-all-ukrainian",
+   "prompt": "Порівняй наш продукт з конкурентами, питання пропускаю. Сайт: example.com",
+   "expectations": [
+    "The skill picks competitors from comparison pages and review categories and says how",
+    "lang is uk and interface labels are Ukrainian",
+    "Each skipped question is listed with its assumption"
+   ],
+   "forbidden": [
+    "Blocking on the questions"
+   ]
+  },
+  {
+   "id": "handoff-for-agent",
+   "prompt": "Make the teardown and give me something I can hand to a coding agent to implement the page changes.",
+   "expectations": [
+    "handoff.md lists tasks in ICE order with dependencies first",
+    "Each task has competitor evidence with URL and date, steps, acceptance criteria and how to verify",
+    "Default rules include: no invented facts, sources on anything published about a competitor, quotes up to 15 words, claims are not facts"
+   ],
+   "forbidden": [
+    "A task without the competitor evidence behind it"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,763 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "competitor-teardown report data",
+ "description": "One audit.json feeds both outputs: the report page (build_report.py) and the hands-off file (build_handoff.py). scripts/validate_audit.py checks this shape plus the skill's rules.",
+ "type": "object",
+ "required": [
+  "lang",
+  "text",
+  "products",
+  "criteria",
+  "canvas",
+  "map",
+  "errc",
+  "win",
+  "lose",
+  "ops",
+  "detail",
+  "plans",
+  "sources"
+ ],
+ "$defs": {
+  "srcRef": {
+   "type": "string",
+   "description": "id of an entry in sources"
+  },
+  "srcList": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "$ref": "#/$defs/srcRef"
+   }
+  },
+  "lens": {
+   "type": "string",
+   "enum": [
+    "pos",
+    "buyer",
+    "breadth",
+    "price",
+    "proof",
+    "attack",
+    "onb",
+    "integ",
+    "rev",
+    "seo",
+    "sig",
+    "chg"
+   ]
+  },
+  "area": {
+   "type": "string",
+   "enum": [
+    "page",
+    "message",
+    "pricing",
+    "feature",
+    "content",
+    "proof",
+    "sales",
+    "data"
+   ]
+  },
+  "wl": {
+   "type": "object",
+   "required": [
+    "t",
+    "d",
+    "s"
+   ],
+   "description": "Where we win / lose item",
+   "properties": {
+    "t": {
+     "type": "string"
+    },
+    "d": {
+     "type": "string"
+    },
+    "s": {
+     "$ref": "#/$defs/srcList"
+    },
+    "vs": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     },
+     "description": "Competitor ids involved."
+    }
+   }
+  }
+ },
+ "properties": {
+  "lang": {
+   "type": "string",
+   "enum": [
+    "uk",
+    "en"
+   ],
+   "description": "Report language; picks interface labels."
+  },
+  "title": {
+   "type": "string",
+   "description": "Browser tab title."
+  },
+  "checked": {
+   "type": "string",
+   "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+   "description": "Date of the run (YYYY-MM-DD); sources checked on other days keep their own date."
+  },
+  "text": {
+   "type": "object",
+   "description": "Report's own text. Tokens {lead} {trail} {crit} {cells} {qw} {n} {conf} are replaced; [[words]] turn red. A missing or empty key removes that element.",
+   "properties": {
+    "label": {
+     "type": "string"
+    },
+    "headline": {
+     "type": "string"
+    },
+    "lead": {
+     "type": "string"
+    },
+    "matrixH": {
+     "type": "string"
+    },
+    "matrixP": {
+     "type": "string"
+    },
+    "canvasH": {
+     "type": "string"
+    },
+    "canvasP": {
+     "type": "string"
+    },
+    "errcH": {
+     "type": "string"
+    },
+    "errcP": {
+     "type": "string"
+    },
+    "mapH": {
+     "type": "string"
+    },
+    "mapP": {
+     "type": "string"
+    },
+    "winH": {
+     "type": "string"
+    },
+    "winP": {
+     "type": "string"
+    },
+    "mxH": {
+     "type": "string"
+    },
+    "mxP": {
+     "type": "string"
+    },
+    "opsH": {
+     "type": "string"
+    },
+    "opsP": {
+     "type": "string"
+    },
+    "nextH": {
+     "type": "string"
+    },
+    "nextP": {
+     "type": "string"
+    },
+    "planH": {
+     "type": "string"
+    },
+    "planP": {
+     "type": "string"
+    },
+    "dataH": {
+     "type": "string"
+    },
+    "dataP": {
+     "type": "string"
+    },
+    "footer": {
+     "type": "string"
+    },
+    "how": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "kpis": {
+   "type": "array",
+   "maxItems": 4,
+   "items": {
+    "type": "object",
+    "required": [
+     "v",
+     "l"
+    ],
+    "properties": {
+     "v": {
+      "type": "string",
+      "description": "Value; may use tokens."
+     },
+     "l": {
+      "type": "string"
+     },
+     "hot": {
+      "type": "boolean"
+     },
+     "src": {
+      "type": "string",
+      "description": "Source id; required for literal numbers."
+     }
+    }
+   }
+  },
+  "products": {
+   "type": "array",
+   "minItems": 2,
+   "maxItems": 6,
+   "description": "Our product first is customary; exactly one has us: true.",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "url"
+    ],
+    "properties": {
+     "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_-]+$"
+     },
+     "name": {
+      "type": "string"
+     },
+     "url": {
+      "type": "string"
+     },
+     "us": {
+      "type": "boolean"
+     },
+     "tag": {
+      "type": "string",
+      "description": "One line: who they are, in your words."
+     }
+    }
+   }
+  },
+  "criteria": {
+   "type": "array",
+   "minItems": 6,
+   "description": "Rows of the comparison matrix. Same criteria for every product.",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "k",
+     "lens",
+     "cells"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "k": {
+      "type": "string",
+      "description": "Criterion as a short question or label."
+     },
+     "lens": {
+      "$ref": "#/$defs/lens"
+     },
+     "cells": {
+      "type": "object",
+      "description": "One entry per product id.",
+      "additionalProperties": {
+       "type": "object",
+       "required": [
+        "v"
+       ],
+       "properties": {
+        "v": {
+         "type": "string",
+         "enum": [
+          "yes",
+          "part",
+          "no",
+          "nd"
+         ],
+         "description": "yes ✓, part ◐, no ✗, nd = no data (never guess)."
+        },
+        "t": {
+         "type": "string",
+         "description": "What was seen, in your words; quotes ≤15 words."
+        },
+        "s": {
+         "$ref": "#/$defs/srcRef"
+        },
+        "claim": {
+         "type": "boolean",
+         "description": "true when the cell repeats what one vendor says about another; shown as a claim, not a fact."
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "canvas": {
+   "type": "object",
+   "required": [
+    "factors"
+   ],
+   "description": "Blue Ocean strategy canvas: offering level 0-10 per factor per product.",
+   "properties": {
+    "factors": {
+     "type": "array",
+     "minItems": 4,
+     "maxItems": 10,
+     "items": {
+      "type": "object",
+      "required": [
+       "k",
+       "levels",
+       "basis"
+      ],
+      "properties": {
+       "k": {
+        "type": "string"
+       },
+       "levels": {
+        "type": "object",
+        "additionalProperties": {
+         "type": "number",
+         "minimum": 0,
+         "maximum": 10
+        }
+       },
+       "basis": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+         "type": "string"
+        },
+        "description": "Criterion ids the levels are judged from."
+       }
+      }
+     }
+    },
+    "note": {
+     "type": "string"
+    }
+   }
+  },
+  "map": {
+   "type": "object",
+   "required": [
+    "x",
+    "y",
+    "points"
+   ],
+   "properties": {
+    "x": {
+     "type": "object",
+     "required": [
+      "k",
+      "lo",
+      "hi"
+     ],
+     "properties": {
+      "k": {
+       "type": "string"
+      },
+      "lo": {
+       "type": "string"
+      },
+      "hi": {
+       "type": "string"
+      }
+     }
+    },
+    "y": {
+     "type": "object",
+     "required": [
+      "k",
+      "lo",
+      "hi"
+     ],
+     "properties": {
+      "k": {
+       "type": "string"
+      },
+      "lo": {
+       "type": "string"
+      },
+      "hi": {
+       "type": "string"
+      }
+     }
+    },
+    "points": {
+     "type": "object",
+     "additionalProperties": {
+      "type": "object",
+      "required": [
+       "x",
+       "y"
+      ],
+      "properties": {
+       "x": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 10
+       },
+       "y": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 10
+       }
+      }
+     }
+    },
+    "note": {
+     "type": "string"
+    }
+   }
+  },
+  "errc": {
+   "type": "object",
+   "required": [
+    "eliminate",
+    "reduce",
+    "raise",
+    "create"
+   ],
+   "additionalProperties": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "required": [
+      "t",
+      "why"
+     ],
+     "properties": {
+      "t": {
+       "type": "string"
+      },
+      "why": {
+       "type": "string"
+      },
+      "op": {
+       "type": "integer",
+       "description": "Opportunity id this item turns into."
+      }
+     }
+    }
+   }
+  },
+  "win": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/wl"
+   }
+  },
+  "lose": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/wl"
+   }
+  },
+  "ops": {
+   "type": "array",
+   "minItems": 1,
+   "description": "Moves. Ids are 1-based positions.",
+   "items": {
+    "type": "object",
+    "required": [
+     "t",
+     "a",
+     "x",
+     "ev",
+     "I",
+     "C",
+     "E"
+    ],
+    "properties": {
+     "t": {
+      "type": "string"
+     },
+     "a": {
+      "$ref": "#/$defs/area"
+     },
+     "vs": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "description": "Competitor ids this move answers."
+     },
+     "x": {
+      "type": "string",
+      "enum": [
+       "opt",
+       "ex"
+      ]
+     },
+     "ev": {
+      "type": "string",
+      "enum": [
+       "obs",
+       "hyp"
+      ]
+     },
+     "I": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+     },
+     "C": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+     },
+     "E": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10
+     }
+    }
+   }
+  },
+  "plans": {
+   "type": "object",
+   "description": "Keyed by opportunity id; required for the top 3 by ICE.",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "h",
+     "m",
+     "t"
+    ],
+    "properties": {
+     "h": {
+      "type": "string"
+     },
+     "m": {
+      "type": "string"
+     },
+     "t": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "detail": {
+   "type": "object",
+   "description": "Keyed by opportunity id; one per opportunity.",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "why",
+     "evidence",
+     "steps",
+     "metric",
+     "effort",
+     "risk"
+    ],
+    "properties": {
+     "why": {
+      "type": "string"
+     },
+     "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+       "type": "object",
+       "required": [
+        "p",
+        "t",
+        "s"
+       ],
+       "properties": {
+        "p": {
+         "type": "string",
+         "description": "Product id the evidence is about."
+        },
+        "t": {
+         "type": "string"
+        },
+        "s": {
+         "$ref": "#/$defs/srcRef"
+        },
+        "claim": {
+         "type": "boolean"
+        }
+       }
+      }
+     },
+     "steps": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+       "type": "string"
+      }
+     },
+     "metric": {
+      "type": "string"
+     },
+     "effort": {
+      "type": "string"
+     },
+     "risk": {
+      "type": "string"
+     },
+     "alt": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "rtype": {
+      "type": "string"
+     },
+     "thr": {
+      "type": "string"
+     },
+     "pm": {
+      "type": "string"
+     },
+     "copy": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "accept": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "depends": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      },
+      "description": "Task ids, e.g. [\"T04\"]."
+     },
+     "verify": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "answers": {
+   "type": "array",
+   "items": {
+    "type": "object",
+    "required": [
+     "q",
+     "a"
+    ],
+    "properties": {
+     "q": {
+      "type": "string"
+     },
+     "a": {
+      "type": "string"
+     },
+     "skipped": {
+      "type": "boolean"
+     }
+    }
+   }
+  },
+  "sources": {
+   "type": "array",
+   "minItems": 1,
+   "description": "Every page, listing and tool used, plus the ones that were missing. Numbered in order in the report.",
+   "items": {
+    "type": "object",
+    "required": [
+     "id",
+     "name",
+     "status",
+     "kind"
+    ],
+    "properties": {
+     "id": {
+      "type": "string"
+     },
+     "name": {
+      "type": "string"
+     },
+     "url": {
+      "type": "string"
+     },
+     "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Checked on; required with a url."
+     },
+     "kind": {
+      "type": "string",
+      "enum": [
+       "own",
+       "rival",
+       "review",
+       "third",
+       "data",
+       "owner",
+       "tool"
+      ],
+      "description": "own = a vendor about itself; rival = a vendor about a competitor; review = review site or app store; third = press, analysts, databases (Tranco, Crunchbase, Wayback); data = analytics/CRM; owner = the requester's answers; tool = a connector."
+     },
+     "by": {
+      "type": "string",
+      "description": "Product id of the publisher for own and rival."
+     },
+     "status": {
+      "type": "string",
+      "enum": [
+       "ok",
+       "demo",
+       "no"
+      ]
+     },
+     "note": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "glossary": {
+   "type": "object",
+   "additionalProperties": {
+    "type": "object",
+    "required": [
+     "g",
+     "d"
+    ],
+    "properties": {
+     "g": {
+      "type": "string"
+     },
+     "d": {
+      "type": "string"
+     }
+    }
+   }
+  },
+  "rules": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "description": "Rules for the implementer in the hands-off file. Defaults apply when missing."
+  }
+ }
+}

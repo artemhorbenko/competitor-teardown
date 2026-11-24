@@ -1,0 +1,13 @@
+{
+  "name": "competitor-teardown",
+  "version": "1.0.0",
+  "description": "Compare a product with up to 5 competitors through 12 lenses from public pages and review sites. Every matrix cell cites a URL and a checked-on date. Delivers a visual report (comparison matrix, Blue Ocean strategy canvas, ERRC grid, positioning map, where we win and lose, ICE-ranked moves) and a hands-off brief with tasks for AI agents.",
+  "author": {
+    "name": "Artem Horbenko",
+    "url": "https://github.com/artemhorbenko"
+  },
+  "homepage": "https://github.com/artemhorbenko/competitor-teardown",
+  "repository": "https://github.com/artemhorbenko/competitor-teardown",
+  "license": "MIT",
+  "keywords": ["competitive-analysis", "competitor", "teardown", "blue-ocean", "errc", "positioning", "pricing", "g2", "report", "handoff"]
+}

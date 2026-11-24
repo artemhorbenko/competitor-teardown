@@ -1,0 +1,16 @@
+[
+ {"query": "Compare our product with Acme Referrals and Globex Loyalty", "should_trigger": true},
+ {"query": "Do a competitive analysis of our SaaS against the top 3 alternatives", "should_trigger": true},
+ {"query": "Our competitor published a 'them vs us' page. How should we respond?", "should_trigger": true},
+ {"query": "Where do we win and lose against our competitors? Public info is fine.", "should_trigger": true},
+ {"query": "Порівняй нас із конкурентами по цінах, відгуках і позиціонуванню", "should_trigger": true},
+ {"query": "Зроби розбір конкурентів для нашого сайту", "should_trigger": true},
+ {"query": "Build a Blue Ocean strategy canvas for us vs competitors", "should_trigger": true},
+ {"query": "Competitor teardown for a sales battlecard", "should_trigger": true},
+ {"query": "Audit our onboarding funnel and tell me where users drop", "should_trigger": false},
+ {"query": "What is a strategy canvas?", "should_trigger": false},
+ {"query": "Write a blog post comparing CRM tools in general", "should_trigger": false},
+ {"query": "Fix the pricing table layout on mobile", "should_trigger": false},
+ {"query": "Translate our comparison page into Ukrainian", "should_trigger": false},
+ {"query": "Summarize this G2 review", "should_trigger": false}
+]

@@ -1,0 +1,30 @@
+name: Wrong fact or unfair comparison
+description: A cell does not match its source, a claim is presented as fact, a quote is too long, or a move is generic
+labels: ["analysis"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of problem
+      options:
+        - A cell does not match its source
+        - A source has no URL or date
+        - One vendor's claim about another shown as fact
+        - Quote longer than 15 words / copied text
+        - Products judged on different criteria or depth
+        - A move is generic, not tied to competitor evidence
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: Quote the cell or move, the source it cites, and what the source actually says.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Setup
+      description: "e.g. B2B SaaS, 4 competitors, public pages only, browser available. No private data, please."

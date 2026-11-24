@@ -1,0 +1,1533 @@
+{
+ "lang": "en",
+ "title": "Competitor teardown: demo report",
+ "checked": "2026-11-24",
+ "text": {
+  "label": "Demo report: fictional companies (Loopwell, Kinship, Amplo, Referrly, ShareMint) on .example domains; every number and page is made up",
+  "headline": "Kinship sells the switch from Loopwell with a price on the page; Loopwell answers with [[\"Talk to sales\"]]",
+  "lead": "Loopwell leads on enterprise depth, fraud controls and review ratings, but it trails on {trail} of {crit} criteria, nearly all at the evaluation step: no public price, no self-serve setup, no migration help. Kinship has built a comparison page and a migration guide aimed at Loopwell's customers. The cheapest wins are pages and proof, not features.",
+  "matrixH": "Loopwell trails on {trail} of {crit} criteria and leads outright on {lead}; the gaps cluster around pricing and switching",
+  "matrixP": "Same criteria for every product. Each cell shows what was seen and a numbered source with the date it was checked. A red bar marks a criterion where Loopwell is behind the best competitor. Ratings count as ✓ at 4.5+ with 100+ reviews.",
+  "canvasH": "Everyone crowds into the same curve on integrations; Loopwell's line drops exactly where buyers compare",
+  "canvasP": "Blue Ocean strategy canvas: offering level 0–10 per factor, judged from the matrix rows named in each factor. Where lines run together, nobody wins; the gaps are where a move can differ.",
+  "errcH": "Raise price clarity and switching help; create a proof library nobody else has",
+  "errcP": "ERRC grid for Loopwell's next two quarters, drawn from the matrix and the canvas.",
+  "mapH": "Loopwell sits alone in managed, referrals-only; Kinship and ShareMint sell suites from the self-serve side",
+  "mapP": "Positions are judgments from the matrix rows on setup, pricing and breadth, not measured data.",
+  "winH": "Loopwell wins on depth and trust, and loses before the first call",
+  "winP": "Each point cites the sources behind it.",
+  "mxH": "{qw} quick wins: mostly pages and proof that already exist inside the company",
+  "mxP": "Each dot is a move from the table below. Black: optimize what exists; red outline: exploration bets.",
+  "opsH": "{n} moves, ranked by ICE",
+  "opsP": "ICE = impact × confidence × ease (each 1–10). \"Observed\" means the gap is visible on public pages; \"hypothesis\" means it still needs a test.",
+  "nextH": "Three moves: show a price, answer the comparison page, help people switch in",
+  "nextP": "Each has a hypothesis, a success metric and the cheapest way to test it.",
+  "planH": "Full plan: all {n} moves, most valuable first",
+  "planP": "For each move: the evidence, the competitor pages behind it, steps, metric, effort and risk. The top three also show alternatives, an experiment with a threshold and a pre-mortem.",
+  "dataH": "Confidence {conf}%: public pages and review sites only",
+  "dataP": "This teardown read vendor sites, review listings, a domain rank list, a funding database and web archive snapshots. It did not see traffic, win rates or loss reasons, so impact scores are estimates.",
+  "how": [
+   "Checked sources: browser and web search available; traffic and CRM data not available. Asked 4 skippable questions; one was skipped.",
+   "Read each vendor's homepage, pricing, comparison and docs pages, review listings, a domain rank list, a funding database and archive snapshots from a year ago. Every cell records the page and the date.",
+   "Filled the same 17 criteria for all 5 products, marked one vendor's words about another as claims, and judged the canvas and the map from the matrix.",
+   "Scored moves with ICE, compared alternatives for the top 3, wrote experiments and pre-mortems, then validated the data and checked the page on desktop, tablet and phone."
+  ],
+  "footer": "demo data"
+ },
+ "kpis": [
+  {
+   "v": "{trail}/{crit}",
+   "l": "Criteria where Loopwell trails the best competitor",
+   "hot": true
+  },
+  {
+   "v": "4.7",
+   "l": "Loopwell's ReviewGrid rating, highest of five (186 reviews)",
+   "src": "rg"
+  },
+  {
+   "v": "3 of 4",
+   "l": "Competitors that show a price on their pricing page",
+   "src": "kn-price"
+  },
+  {
+   "v": "{qw}",
+   "l": "Quick wins"
+  }
+ ],
+ "products": [
+  {
+   "id": "loopwell",
+   "name": "Loopwell",
+   "url": "https://loopwell.example",
+   "us": true,
+   "tag": "Referral platform for mid-market brands"
+  },
+  {
+   "id": "kinship",
+   "name": "Kinship",
+   "url": "https://kinship.example",
+   "tag": "Referral and loyalty for Shopify brands"
+  },
+  {
+   "id": "amplo",
+   "name": "Amplo",
+   "url": "https://amplo.example",
+   "tag": "Enterprise advocacy suite"
+  },
+  {
+   "id": "referrly",
+   "name": "Referrly",
+   "url": "https://referrly.example",
+   "tag": "Self-serve referral tool for small shops"
+  },
+  {
+   "id": "sharemint",
+   "name": "ShareMint",
+   "url": "https://sharemint.example",
+   "tag": "Reviews and loyalty with a referral add-on"
+  }
+ ],
+ "criteria": [
+  {
+   "id": "promise",
+   "k": "One clear promise above the fold",
+   "lens": "pos",
+   "cells": {
+    "loopwell": {
+     "v": "yes",
+     "t": "Referral revenue you can prove, with an ROI calculator",
+     "s": "lw-home"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Referrals and loyalty in one Shopify app",
+     "s": "kn-home"
+    },
+    "amplo": {
+     "v": "part",
+     "t": "Advocacy, referrals, communities and events in one headline",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "Launch a referral program in 10 minutes",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "part",
+     "t": "Leads with reviews; referrals appear lower on the page",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "icp",
+   "k": "Names the target buyer and size",
+   "lens": "buyer",
+   "cells": {
+    "loopwell": {
+     "v": "yes",
+     "t": "Brands with $10m+ online revenue",
+     "s": "lw-price"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Shopify and Shopify Plus stores",
+     "s": "kn-price"
+    },
+    "amplo": {
+     "v": "yes",
+     "t": "Enterprise, 1,000+ employees",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "Small businesses and local services",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "part",
+     "t": "Any ecommerce store; no size given",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "industries",
+   "k": "Industry pages",
+   "lens": "buyer",
+   "cells": {
+    "loopwell": {
+     "v": "part",
+     "t": "Retail only",
+     "s": "lw-home"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Beauty, apparel, subscription, pet",
+     "s": "kn-home"
+    },
+    "amplo": {
+     "v": "yes",
+     "t": "Finance, telecom, SaaS, retail",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "part",
+     "t": "Services and local business",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "no",
+     "t": "No industry pages",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "loyalty",
+   "k": "Loyalty or rewards beyond referrals",
+   "lens": "breadth",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "Referrals only",
+     "s": "lw-home"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Points, tiers and referrals",
+     "s": "kn-home"
+    },
+    "amplo": {
+     "v": "yes",
+     "t": "Advocacy points and challenges",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "no",
+     "t": "Referrals only",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Points and VIP tiers",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "price",
+   "k": "Price shown on the pricing page",
+   "lens": "price",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "Three revenue bands, every one says Talk to sales",
+     "s": "lw-price"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "From $399/month, estimator by order volume",
+     "s": "kn-price"
+    },
+    "amplo": {
+     "v": "no",
+     "t": "Custom quote only",
+     "s": "am-price"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "$49, $129 and $299 per month",
+     "s": "rf-price"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Free plan, paid from $199/month",
+     "s": "sm-price"
+    }
+   }
+  },
+  {
+   "id": "trial",
+   "k": "Free plan or trial",
+   "lens": "price",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "Demo request only",
+     "s": "lw-price"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "14-day trial",
+     "s": "kn-price"
+    },
+    "amplo": {
+     "v": "no",
+     "t": "Demo request only",
+     "s": "am-price"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "Free up to 50 referrals a month",
+     "s": "rf-price"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Free plan",
+     "s": "sm-price"
+    }
+   }
+  },
+  {
+   "id": "named",
+   "k": "Named customers with a result number",
+   "lens": "proof",
+   "cells": {
+    "loopwell": {
+     "v": "part",
+     "t": "Logos shown; the two case studies name no brand",
+     "s": "lw-home"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Six named brands, each with a number",
+     "s": "kn-home"
+    },
+    "amplo": {
+     "v": "yes",
+     "t": "Named enterprise cases with ROI figures",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "part",
+     "t": "Quotes with first names only",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "part",
+     "t": "Logos, no numbers",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "vs",
+   "k": "Publishes comparison pages against rivals",
+   "lens": "attack",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "None found",
+     "s": "lw-home"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Kinship vs Loopwell page, updated October 2026",
+     "s": "kn-vs"
+    },
+    "amplo": {
+     "v": "no",
+     "t": "None found",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "Alternatives page listing four rivals",
+     "s": "rf-alt"
+    },
+    "sharemint": {
+     "v": "no",
+     "t": "None found",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "migrate",
+   "k": "Migration guide for switchers",
+   "lens": "attack",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "None found",
+     "s": "lw-docs"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Step-by-step guide for moving from Loopwell",
+     "s": "kn-migrate"
+    },
+    "amplo": {
+     "v": "nd"
+    },
+    "referrly": {
+     "v": "part",
+     "t": "CSV import of existing advocates",
+     "s": "rf-docs"
+    },
+    "sharemint": {
+     "v": "nd"
+    }
+   }
+  },
+  {
+   "id": "golive",
+   "k": "States a time to go live",
+   "lens": "onb",
+   "cells": {
+    "loopwell": {
+     "v": "part",
+     "t": "Says weeks, with no number",
+     "s": "lw-home"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Live in 7 days for Shopify stores",
+     "s": "kn-home"
+    },
+    "amplo": {
+     "v": "part",
+     "t": "Implementation plan agreed per client",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "10 minutes",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Install in one click",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "selfserve",
+   "k": "Self-serve setup",
+   "lens": "onb",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "Set up by the Loopwell team",
+     "s": "lw-docs"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Setup wizard in the Shopify app",
+     "s": "kn-home"
+    },
+    "amplo": {
+     "v": "no",
+     "t": "Managed implementation",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "Signup and wizard",
+     "s": "rf-home"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "App install and templates",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "shopify",
+   "k": "Shopify app",
+   "lens": "integ",
+   "cells": {
+    "loopwell": {
+     "v": "yes",
+     "t": "Listed, 4.8 from 64 reviews",
+     "s": "as"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Listed, 4.6 from 1,240 reviews",
+     "s": "as"
+    },
+    "amplo": {
+     "v": "no",
+     "t": "Not listed",
+     "s": "as"
+    },
+    "referrly": {
+     "v": "yes",
+     "t": "Listed, 4.2 from 310 reviews",
+     "s": "as"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Listed, 4.5 from 2,900 reviews",
+     "s": "as"
+    }
+   }
+  },
+  {
+   "id": "api",
+   "k": "Public API docs or MCP server",
+   "lens": "integ",
+   "cells": {
+    "loopwell": {
+     "v": "yes",
+     "t": "Public REST API docs and webhooks",
+     "s": "lw-docs"
+    },
+    "kinship": {
+     "v": "part",
+     "t": "API on the top plan only",
+     "s": "kn-price"
+    },
+    "amplo": {
+     "v": "yes",
+     "t": "API and an MCP server announced in 2026",
+     "s": "am-home"
+    },
+    "referrly": {
+     "v": "part",
+     "t": "Zapier only",
+     "s": "rf-docs"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Public API",
+     "s": "sm-home"
+    }
+   }
+  },
+  {
+   "id": "rating",
+   "k": "ReviewGrid rating and count",
+   "lens": "rev",
+   "cells": {
+    "loopwell": {
+     "v": "yes",
+     "t": "4.7 from 186 reviews; themes: support, fraud control",
+     "s": "rg"
+    },
+    "kinship": {
+     "v": "part",
+     "t": "4.4 from 402 reviews; themes: easy setup, price rises",
+     "s": "rg"
+    },
+    "amplo": {
+     "v": "part",
+     "t": "4.3 from 97 reviews; themes: powerful, long setup",
+     "s": "rg"
+    },
+    "referrly": {
+     "v": "part",
+     "t": "4.1 from 58 reviews; themes: cheap, limited",
+     "s": "rg"
+    },
+    "sharemint": {
+     "v": "part",
+     "t": "4.4 from 1,020 reviews; themes: easy install, support waits",
+     "s": "rg"
+    }
+   }
+  },
+  {
+   "id": "rank",
+   "k": "Domain rank and content footprint",
+   "lens": "seo",
+   "cells": {
+    "loopwell": {
+     "v": "part",
+     "t": "Rank 182,000; blog of 40 posts",
+     "s": "rank"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Rank 61,000; blog, templates, benchmark report",
+     "s": "rank"
+    },
+    "amplo": {
+     "v": "yes",
+     "t": "Rank 48,000; research reports",
+     "s": "rank"
+    },
+    "referrly": {
+     "v": "part",
+     "t": "Rank 240,000; how-to guides",
+     "s": "rank"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Rank 22,000",
+     "s": "rank"
+    }
+   }
+  },
+  {
+   "id": "hiring",
+   "k": "Hiring or funding signals in the last 12 months",
+   "lens": "sig",
+   "cells": {
+    "loopwell": {
+     "v": "part",
+     "t": "Two engineering roles open",
+     "s": "lw-careers"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Series B in June 2026; hiring sales in Europe",
+     "s": "fund"
+    },
+    "amplo": {
+     "v": "part",
+     "t": "Hiring freeze noted on careers page",
+     "s": "am-careers"
+    },
+    "referrly": {
+     "v": "nd"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Acquired a loyalty startup in 2026",
+     "s": "fund"
+    }
+   }
+  },
+  {
+   "id": "change",
+   "k": "Changed pricing or positioning in the last year",
+   "lens": "chg",
+   "cells": {
+    "loopwell": {
+     "v": "no",
+     "t": "Pricing page unchanged since a year ago",
+     "s": "wb"
+    },
+    "kinship": {
+     "v": "yes",
+     "t": "Added the estimator and the vs-Loopwell page",
+     "s": "wb"
+    },
+    "amplo": {
+     "v": "part",
+     "t": "Added AI wording to the headline",
+     "s": "wb"
+    },
+    "referrly": {
+     "v": "nd"
+    },
+    "sharemint": {
+     "v": "yes",
+     "t": "Referral add-on moved into every paid plan",
+     "s": "wb"
+    }
+   }
+  }
+ ],
+ "canvas": {
+  "factors": [
+   {
+    "k": "Price clarity",
+    "basis": [
+     "price",
+     "trial"
+    ],
+    "levels": {
+     "loopwell": 1,
+     "kinship": 8,
+     "amplo": 1,
+     "referrly": 9,
+     "sharemint": 8
+    }
+   },
+   {
+    "k": "Speed to go live",
+    "basis": [
+     "golive",
+     "selfserve"
+    ],
+    "levels": {
+     "loopwell": 3,
+     "kinship": 8,
+     "amplo": 2,
+     "referrly": 10,
+     "sharemint": 9
+    }
+   },
+   {
+    "k": "Enterprise depth",
+    "basis": [
+     "icp",
+     "api"
+    ],
+    "levels": {
+     "loopwell": 8,
+     "kinship": 4,
+     "amplo": 9,
+     "referrly": 1,
+     "sharemint": 3
+    }
+   },
+   {
+    "k": "Named proof",
+    "basis": [
+     "named"
+    ],
+    "levels": {
+     "loopwell": 4,
+     "kinship": 8,
+     "amplo": 8,
+     "referrly": 3,
+     "sharemint": 3
+    }
+   },
+   {
+    "k": "Integrations",
+    "basis": [
+     "shopify",
+     "api"
+    ],
+    "levels": {
+     "loopwell": 8,
+     "kinship": 7,
+     "amplo": 7,
+     "referrly": 5,
+     "sharemint": 8
+    }
+   },
+   {
+    "k": "Switching help",
+    "basis": [
+     "vs",
+     "migrate"
+    ],
+    "levels": {
+     "loopwell": 0,
+     "kinship": 9,
+     "amplo": 1,
+     "referrly": 5,
+     "sharemint": 0
+    }
+   },
+   {
+    "k": "Suite breadth",
+    "basis": [
+     "loyalty",
+     "promise"
+    ],
+    "levels": {
+     "loopwell": 2,
+     "kinship": 7,
+     "amplo": 9,
+     "referrly": 1,
+     "sharemint": 7
+    }
+   },
+   {
+    "k": "Review rating",
+    "basis": [
+     "rating"
+    ],
+    "levels": {
+     "loopwell": 9,
+     "kinship": 7,
+     "amplo": 6,
+     "referrly": 5,
+     "sharemint": 7
+    }
+   }
+  ],
+  "note": "Levels are judgments from the named matrix rows, not measured data."
+ },
+ "map": {
+  "x": {
+   "k": "How it is bought and run",
+   "lo": "Self-serve",
+   "hi": "Managed"
+  },
+  "y": {
+   "k": "Scope",
+   "lo": "Referrals only",
+   "hi": "Full suite"
+  },
+  "points": {
+   "loopwell": {
+    "x": 8,
+    "y": 3
+   },
+   "kinship": {
+    "x": 4,
+    "y": 7
+   },
+   "amplo": {
+    "x": 9,
+    "y": 9
+   },
+   "referrly": {
+    "x": 1,
+    "y": 1
+   },
+   "sharemint": {
+    "x": 2,
+    "y": 7
+   }
+  },
+  "note": "Kinship added a price estimator and a vs-Loopwell page this year (archive snapshots): it is moving toward Loopwell's buyers from the self-serve side."
+ },
+ "errc": {
+  "eliminate": [
+   {
+    "t": "Talk to sales as the only door on the pricing page",
+    "why": "Three of four rivals show a price; Loopwell shows none.",
+    "op": 1
+   }
+  ],
+  "reduce": [
+   {
+    "t": "Required fields on the demo form",
+    "why": "Seven fields before any contact; Kinship starts a trial with an email.",
+    "op": 7
+   }
+  ],
+  "raise": [
+   {
+    "t": "Named proof with numbers",
+    "why": "Loopwell's case studies are anonymous while Kinship and Amplo name brands.",
+    "op": 4
+   },
+   {
+    "t": "Switching help",
+    "why": "Kinship's migration guide targets Loopwell customers; Loopwell offers nothing back.",
+    "op": 3
+   }
+  ],
+  "create": [
+   {
+    "t": "Fraud-savings report from platform data",
+    "why": "Fraud control is Loopwell's top review theme and no rival publishes numbers on it.",
+    "op": 6
+   }
+  ]
+ },
+ "win": [
+  {
+   "t": "Highest review rating of the five",
+   "d": "4.7 on ReviewGrid with support and fraud control as top themes.",
+   "s": [
+    "rg"
+   ],
+   "vs": [
+    "kinship",
+    "amplo",
+    "referrly",
+    "sharemint"
+   ]
+  },
+  {
+   "t": "Enterprise depth without an enterprise setup bill",
+   "d": "Public API and webhooks like Amplo, with a Shopify app Amplo lacks.",
+   "s": [
+    "lw-docs",
+    "as"
+   ],
+   "vs": [
+    "amplo"
+   ]
+  }
+ ],
+ "lose": [
+  {
+   "t": "No price where buyers compare",
+   "d": "Kinship, Referrly and ShareMint show prices; Loopwell asks for a call.",
+   "s": [
+    "lw-price",
+    "kn-price",
+    "rf-price",
+    "sm-price"
+   ],
+   "vs": [
+    "kinship",
+    "referrly",
+    "sharemint"
+   ]
+  },
+  {
+   "t": "Kinship owns the comparison",
+   "d": "A Kinship vs Loopwell page and a migration guide exist; Loopwell has neither.",
+   "s": [
+    "kn-vs",
+    "kn-migrate"
+   ],
+   "vs": [
+    "kinship"
+   ]
+  },
+  {
+   "t": "Referrals only, while three rivals sell suites",
+   "d": "Kinship, Amplo and ShareMint bundle loyalty; Loopwell sells one module.",
+   "s": [
+    "kn-home",
+    "am-home",
+    "sm-home"
+   ],
+   "vs": [
+    "kinship",
+    "amplo",
+    "sharemint"
+   ]
+  }
+ ],
+ "ops": [
+  {
+   "t": "Show a starting price or an estimator on the pricing page",
+   "a": "pricing",
+   "vs": [
+    "kinship",
+    "referrly",
+    "sharemint"
+   ],
+   "x": "opt",
+   "ev": "obs",
+   "I": 8,
+   "C": 7,
+   "E": 7
+  },
+  {
+   "t": "Publish a sourced Loopwell vs Kinship page",
+   "a": "page",
+   "vs": [
+    "kinship"
+   ],
+   "x": "opt",
+   "ev": "obs",
+   "I": 7,
+   "C": 7,
+   "E": 8
+  },
+  {
+   "t": "Switching kit: migration guide and import of existing advocates",
+   "a": "content",
+   "vs": [
+    "kinship"
+   ],
+   "x": "opt",
+   "ev": "hyp",
+   "I": 7,
+   "C": 6,
+   "E": 6
+  },
+  {
+   "t": "Name the brands behind both case studies and add one number each",
+   "a": "proof",
+   "vs": [
+    "kinship",
+    "amplo"
+   ],
+   "x": "opt",
+   "ev": "obs",
+   "I": 6,
+   "C": 7,
+   "E": 8
+  },
+  {
+   "t": "State a go-live number on the homepage, backed by recent launches",
+   "a": "message",
+   "vs": [
+    "kinship",
+    "referrly"
+   ],
+   "x": "opt",
+   "ev": "obs",
+   "I": 5,
+   "C": 6,
+   "E": 8
+  },
+  {
+   "t": "Annual fraud-savings report from platform data",
+   "a": "content",
+   "vs": [
+    "amplo",
+    "kinship"
+   ],
+   "x": "ex",
+   "ev": "hyp",
+   "I": 6,
+   "C": 5,
+   "E": 4
+  },
+  {
+   "t": "Cut the demo form to 3 fields and add calendar booking",
+   "a": "sales",
+   "vs": [
+    "kinship"
+   ],
+   "x": "opt",
+   "ev": "hyp",
+   "I": 5,
+   "C": 5,
+   "E": 8
+  },
+  {
+   "t": "Test a light loyalty module with two current clients",
+   "a": "feature",
+   "vs": [
+    "kinship",
+    "sharemint",
+    "amplo"
+   ],
+   "x": "ex",
+   "ev": "hyp",
+   "I": 7,
+   "C": 4,
+   "E": 2
+  },
+  {
+   "t": "Track pricing to comparison to demo as one funnel",
+   "a": "data",
+   "x": "opt",
+   "ev": "obs",
+   "I": 5,
+   "C": 8,
+   "E": 7
+  }
+ ],
+ "plans": {
+  "1": {
+   "h": "If the pricing page shows a starting price, more qualified buyers will book a demo, because three of four rivals already answer the price question.",
+   "m": "Demo requests from the pricing page per 1,000 visits",
+   "t": "A/B on the pricing page for 4 weeks: starting price vs current"
+  },
+  "2": {
+   "h": "If buyers who read Kinship's page find a sourced answer from Loopwell, fewer will drop Loopwell from the shortlist.",
+   "m": "Organic entries to the vs page and demo requests from it",
+   "t": "Publish one page, link it from pricing, compare demos 6 weeks before and after"
+  },
+  "4": {
+   "h": "If case studies name the brand and one number, the homepage will earn more demo clicks, because buyers trust named proof more.",
+   "m": "Homepage click rate on case studies and demo requests",
+   "t": "Ask the two featured clients for permission; swap and compare 4 weeks"
+  }
+ },
+ "detail": {
+  "1": {
+   "why": "Loopwell's pricing page lists three revenue bands and asks for a call in each. Kinship, Referrly and ShareMint show prices; Kinship added an estimator this year.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Price from $399/month with an order-volume estimator",
+     "s": "kn-price"
+    },
+    {
+     "p": "referrly",
+     "t": "Three plans with monthly prices",
+     "s": "rf-price"
+    },
+    {
+     "p": "sharemint",
+     "t": "Free plan, paid from $199/month",
+     "s": "sm-price"
+    },
+    {
+     "p": "kinship",
+     "t": "Estimator added in the last 12 months",
+     "s": "wb"
+    }
+   ],
+   "steps": [
+    "Pick one honest anchor: a starting price for the smallest band, or a range per band.",
+    "Add it to the pricing page with what is included and what changes the price.",
+    "Keep Talk to sales as the second action, not the only one.",
+    "Run the A/B for 4 weeks and compare qualified demos, not just clicks."
+   ],
+   "metric": "Demo requests from the pricing page per 1,000 visits; share qualified by sales",
+   "effort": "2–3 days plus a pricing decision",
+   "risk": "Anchoring too low; publish a starting price that sales already uses.",
+   "alt": [
+    "Price estimator like Kinship's: stronger, but needs a pricing model sales agrees on; next step if the anchor works.",
+    "Gated price sheet behind email: rejected, buyers read it as hiding."
+   ],
+   "rtype": "Viability",
+   "thr": "Pricing-page demo rate +15% and qualified share not lower than control",
+   "pm": "It failed because sales kept quoting differently from the page. Agree the anchor with sales before publishing.",
+   "copy": [
+    "From $1,200 a month for brands up to $20m: anchors the smallest band.",
+    "Most clients pay $1,200–4,000 a month: a range lowers the fear of a high quote."
+   ]
+  },
+  "2": {
+   "why": "Kinship's comparison page targets Loopwell by name and is updated regularly. Loopwell has no comparison page, so buyers who search the two names find only Kinship's version.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Kinship vs Loopwell page, updated October 2026",
+     "s": "kn-vs"
+    },
+    {
+     "p": "loopwell",
+     "t": "Kinship's page says Loopwell has no Shopify app; the app store lists one",
+     "s": "kn-vs",
+     "claim": true
+    },
+    {
+     "p": "loopwell",
+     "t": "Loopwell app listed on AppShelf, 4.8 from 64 reviews",
+     "s": "as"
+    }
+   ],
+   "steps": [
+    "List each claim on Kinship's page and check it against public sources; keep only what you can link.",
+    "Write a Loopwell vs Kinship page: where each fits, a sourced table and the date checked.",
+    "Link it from the pricing page and the footer.",
+    "Re-check the table every quarter and show the date."
+   ],
+   "metric": "Organic entries to the page and demo requests from it",
+   "effort": "≈1 week",
+   "risk": "Claims about a rival go stale; date every row and never state their price unless it is public.",
+   "alt": [
+    "Reply in sales decks only: rejected, buyers search before they talk to sales.",
+    "Ask Kinship to correct the Shopify claim: worth doing as well, but does not answer the buyer."
+   ],
+   "rtype": "Value",
+   "thr": "The page reaches the first results for the two names within 8 weeks and brings 5+ demos",
+   "pm": "It failed because the page read as an attack. Lead with where each product fits, and keep the tone factual."
+  },
+  "3": {
+   "why": "Kinship publishes a step-by-step guide for leaving Loopwell. Loopwell's docs have no guide for brands leaving other tools.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Migration guide aimed at Loopwell customers",
+     "s": "kn-migrate"
+    },
+    {
+     "p": "referrly",
+     "t": "CSV import of existing advocates",
+     "s": "rf-docs"
+    }
+   ],
+   "steps": [
+    "Write one migration guide per main rival: export, mapping, codes, go-live checklist.",
+    "Build an import for existing advocates and referral codes.",
+    "Offer a migration call in the guide."
+   ],
+   "metric": "Deals that mention switching from a rival",
+   "effort": "≈2 weeks",
+   "risk": "Promising a migration the team cannot staff; cap free migrations per month."
+  },
+  "4": {
+   "why": "Both Loopwell case studies say a beauty brand and a fashion retailer. Kinship and Amplo name the brand and give one number each.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Six named brands with one result each",
+     "s": "kn-home"
+    },
+    {
+     "p": "amplo",
+     "t": "Named enterprise cases with ROI figures",
+     "s": "am-home"
+    }
+   ],
+   "steps": [
+    "Ask the two featured clients for permission to name them.",
+    "Add the brand, one number and the period to each case.",
+    "Put the best number in the homepage hero."
+   ],
+   "metric": "Homepage click rate on case studies; demo requests",
+   "effort": "1–2 weeks, mostly waiting for approvals",
+   "risk": "Clients say no; offer review rights and pick others with public results.",
+   "alt": [
+    "Anonymous numbers in the hero: rejected, the gap is trust, not numbers.",
+    "Video testimonials: later, slower to produce."
+   ],
+   "rtype": "Value",
+   "thr": "Case-study click rate +20% in 4 weeks",
+   "pm": "It failed because legal teams took 3 months. Start with clients who already spoke at events."
+  },
+  "5": {
+   "why": "The homepage says weeks without a number. Kinship says 7 days and Referrly says 10 minutes.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Live in 7 days for Shopify stores",
+     "s": "kn-home"
+    },
+    {
+     "p": "referrly",
+     "t": "10 minutes to launch",
+     "s": "rf-home"
+    }
+   ],
+   "steps": [
+    "Take the median go-live time of the last 10 launches.",
+    "State it on the homepage with what it includes.",
+    "Track it every month."
+   ],
+   "metric": "Median days to go live; homepage demo rate",
+   "effort": "1 day",
+   "risk": "Stating a number the team misses; use the median, not the best case."
+  },
+  "6": {
+   "why": "Fraud control is the top theme in Loopwell's reviews and none of the four rivals publishes fraud numbers.",
+   "evidence": [
+    {
+     "p": "loopwell",
+     "t": "Fraud control among top review themes",
+     "s": "rg"
+    },
+    {
+     "p": "amplo",
+     "t": "Publishes research reports, none on fraud",
+     "s": "am-home"
+    }
+   ],
+   "steps": [
+    "Aggregate blocked referrals across clients for 12 months, anonymized.",
+    "Publish a short report with method and limits.",
+    "Use it as the offer for visitors not ready for a demo."
+   ],
+   "metric": "Report downloads and demos from them",
+   "effort": "≈3 weeks",
+   "risk": "Client data: aggregate only, legal review before publishing."
+  },
+  "7": {
+   "why": "Loopwell's demo form asks seven fields before any contact. Kinship starts a trial with an email address.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Trial starts with an email address",
+     "s": "kn-price"
+    }
+   ],
+   "steps": [
+    "Keep name, work email and company; move the rest to the call.",
+    "Add calendar booking after submit.",
+    "Compare completion and qualified share for 4 weeks."
+   ],
+   "metric": "Form completion rate and qualified share",
+   "effort": "1–2 days",
+   "risk": "More unqualified demos; qualify on the call."
+  },
+  "8": {
+   "why": "Kinship, Amplo and ShareMint sell loyalty with referrals; Loopwell sells referrals only. Whether Loopwell's buyers want a suite is unknown.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Points, tiers and referrals",
+     "s": "kn-home"
+    },
+    {
+     "p": "sharemint",
+     "t": "Referral add-on moved into every paid plan",
+     "s": "wb"
+    }
+   ],
+   "steps": [
+    "Ask 8 clients what they use for loyalty and what they pay.",
+    "If 3+ would switch, build the smallest points feature with two clients.",
+    "Decide after 3 months."
+   ],
+   "metric": "Clients willing to pilot; retention of pilot clients",
+   "effort": "3 months",
+   "risk": "Splitting focus before the evaluation-stage gaps are fixed."
+  },
+  "9": {
+   "why": "No analytics data was available for this teardown, so the effect of the page moves cannot be measured yet.",
+   "evidence": [
+    {
+     "p": "kinship",
+     "t": "Kinship's estimator and vs page sit on the same path a buyer takes",
+     "s": "kn-price"
+    }
+   ],
+   "steps": [
+    "Tag pricing, comparison and demo pages as one funnel.",
+    "Report weekly: visits, demo requests, qualified demos.",
+    "Re-run this teardown with the data."
+   ],
+   "metric": "Funnel tracked end to end",
+   "effort": "2 days",
+   "risk": "Double-counted events; test in a staging property first."
+  }
+ },
+ "answers": [
+  {
+   "q": "Our product",
+   "a": "Loopwell, loopwell.example"
+  },
+  {
+   "q": "Competitors",
+   "a": "Kinship, Amplo, Referrly, ShareMint"
+  },
+  {
+   "q": "The buyer",
+   "a": "Heads of retention at mid-market online brands"
+  },
+  {
+   "q": "What decision this informs",
+   "a": "Skipped. Assumption: next quarter's website and pricing roadmap",
+   "skipped": true
+  }
+ ],
+ "sources": [
+  {
+   "id": "lw-home",
+   "name": "Loopwell homepage",
+   "url": "https://loopwell.example",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "loopwell",
+   "status": "ok"
+  },
+  {
+   "id": "lw-price",
+   "name": "Loopwell pricing",
+   "url": "https://loopwell.example/pricing",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "loopwell",
+   "status": "ok"
+  },
+  {
+   "id": "lw-docs",
+   "name": "Loopwell docs",
+   "url": "https://loopwell.example/docs",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "loopwell",
+   "status": "ok"
+  },
+  {
+   "id": "lw-careers",
+   "name": "Loopwell careers",
+   "url": "https://loopwell.example/careers",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "loopwell",
+   "status": "ok"
+  },
+  {
+   "id": "kn-home",
+   "name": "Kinship homepage",
+   "url": "https://kinship.example",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "kinship",
+   "status": "ok"
+  },
+  {
+   "id": "kn-price",
+   "name": "Kinship pricing",
+   "url": "https://kinship.example/pricing",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "kinship",
+   "status": "ok"
+  },
+  {
+   "id": "kn-vs",
+   "name": "Kinship vs Loopwell",
+   "url": "https://kinship.example/vs/loopwell",
+   "date": "2026-11-24",
+   "kind": "rival",
+   "by": "kinship",
+   "status": "ok"
+  },
+  {
+   "id": "kn-migrate",
+   "name": "Kinship: migrate from Loopwell",
+   "url": "https://kinship.example/guides/migrate-from-loopwell",
+   "date": "2026-11-24",
+   "kind": "rival",
+   "by": "kinship",
+   "status": "ok"
+  },
+  {
+   "id": "am-home",
+   "name": "Amplo homepage",
+   "url": "https://amplo.example",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "amplo",
+   "status": "ok"
+  },
+  {
+   "id": "am-price",
+   "name": "Amplo pricing",
+   "url": "https://amplo.example/pricing",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "amplo",
+   "status": "ok"
+  },
+  {
+   "id": "am-careers",
+   "name": "Amplo careers",
+   "url": "https://amplo.example/careers",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "amplo",
+   "status": "ok"
+  },
+  {
+   "id": "rf-home",
+   "name": "Referrly homepage",
+   "url": "https://referrly.example",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "referrly",
+   "status": "ok"
+  },
+  {
+   "id": "rf-price",
+   "name": "Referrly pricing",
+   "url": "https://referrly.example/pricing",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "referrly",
+   "status": "ok"
+  },
+  {
+   "id": "rf-alt",
+   "name": "Referrly alternatives page",
+   "url": "https://referrly.example/alternatives",
+   "date": "2026-11-24",
+   "kind": "rival",
+   "by": "referrly",
+   "status": "ok"
+  },
+  {
+   "id": "rf-docs",
+   "name": "Referrly help center",
+   "url": "https://referrly.example/help",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "referrly",
+   "status": "ok"
+  },
+  {
+   "id": "sm-home",
+   "name": "ShareMint homepage",
+   "url": "https://sharemint.example",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "sharemint",
+   "status": "ok"
+  },
+  {
+   "id": "sm-price",
+   "name": "ShareMint pricing",
+   "url": "https://sharemint.example/pricing",
+   "date": "2026-11-24",
+   "kind": "own",
+   "by": "sharemint",
+   "status": "ok"
+  },
+  {
+   "id": "rg",
+   "name": "ReviewGrid listings (fictional review site)",
+   "url": "https://reviewgrid.example/referral-software",
+   "date": "2026-11-24",
+   "kind": "review",
+   "status": "ok"
+  },
+  {
+   "id": "as",
+   "name": "AppShelf listings (fictional app store)",
+   "url": "https://appshelf.example/referral",
+   "date": "2026-11-24",
+   "kind": "review",
+   "status": "ok"
+  },
+  {
+   "id": "rank",
+   "name": "Domain rank list (fictional)",
+   "url": "https://rank.example",
+   "date": "2026-11-24",
+   "kind": "third",
+   "status": "demo",
+   "note": "rank only, no traffic"
+  },
+  {
+   "id": "fund",
+   "name": "Funding database (fictional)",
+   "url": "https://funding.example",
+   "date": "2026-11-24",
+   "kind": "third",
+   "status": "demo",
+   "note": "free tier"
+  },
+  {
+   "id": "wb",
+   "name": "Web archive snapshots, Nov 2025 vs Nov 2026 (fictional)",
+   "url": "https://archive.example",
+   "date": "2026-11-24",
+   "kind": "third",
+   "status": "ok"
+  },
+  {
+   "id": "owner",
+   "name": "Answers at the start (3 of 4)",
+   "kind": "owner",
+   "status": "ok"
+  },
+  {
+   "id": "traffic",
+   "name": "Traffic by channel (Similarweb or similar)",
+   "kind": "tool",
+   "status": "no",
+   "note": "not connected"
+  },
+  {
+   "id": "crm",
+   "name": "Win/loss reasons from CRM",
+   "kind": "data",
+   "status": "no",
+   "note": "not shared"
+  }
+ ],
+ "glossary": {
+  "ICE": {
+   "g": "priority score",
+   "d": "Impact × Confidence × Ease, each 1–10. The bigger the product, the sooner to do it."
+  },
+  "ERRC": {
+   "g": "eliminate, reduce, raise, create",
+   "d": "The Blue Ocean grid: what to drop, cut, push above the industry and add that nobody offers."
+  },
+  "Blue Ocean": {
+   "g": "compete where others do not",
+   "d": "Strategy of making the competition irrelevant by offering a different mix of value rather than more of the same."
+  },
+  "strategy canvas": {
+   "g": "offering levels side by side",
+   "d": "A line per product across the factors buyers compare. Where lines run together nobody wins; gaps show where to differ."
+  },
+  "pre-mortem": {
+   "g": "failure analysis in advance",
+   "d": "Imagine the move failed in 3 months and explain why. The reasons become risks to close now."
+  },
+  "A/B": {
+   "g": "split test",
+   "d": "Half the visitors see the new version, half the old one; the difference shows the effect."
+  },
+  "MCP": {
+   "g": "connector for AI agents",
+   "d": "Model Context Protocol: a standard way for AI assistants to use a product's data and actions."
+  },
+  "API": {
+   "g": "programmatic access",
+   "d": "A documented way for other software to read and change data in the product."
+  },
+  "ROI": {
+   "g": "return on investment",
+   "d": "What a program earns compared with what it costs."
+  },
+  "Shopify Plus": {
+   "g": "Shopify's enterprise plan",
+   "d": "The plan larger Shopify stores use; a common size signal in ecommerce."
+  }
+ }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "competitor-teardown",
+  "description": "Competitor Teardown: compare your product with competitors from public pages and review sites; get a sourced matrix, strategy canvas, ERRC, positioning map and prioritized moves.",
+  "owner": {
+    "name": "Artem Horbenko",
+    "url": "https://github.com/artemhorbenko"
+  },
+  "plugins": [
+    {
+      "name": "competitor-teardown",
+      "source": "./plugins/competitor-teardown",
+      "description": "Tear down up to 5 competitors through 12 lenses (positioning, buyer, breadth, pricing, proof, comparison pages, onboarding, integrations, reviews, SEO footprint, hiring and funding, changes over time); every cell cites a dated source. Outputs a render-checked HTML report and a hands-off brief for AI agents.",
+      "version": "1.0.0"
+    }
+  ]
+}
